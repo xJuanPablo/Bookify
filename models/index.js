@@ -17,3 +17,5 @@ Users.hasMany(Reading_Entry, {
 Reading_Entry.belongsTo(Users, { 
     foreignKey: 'user_id' 
     });
+
+    module.exports = { Users, Library, Reading_Entry}
