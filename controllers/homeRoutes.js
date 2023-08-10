@@ -23,4 +23,14 @@ res.status(500).json(err);
 }
 });
 
+
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+//TODO: Replace with handlebar login screen
+  res.render('login');
+});
+
 module.exports = router;
