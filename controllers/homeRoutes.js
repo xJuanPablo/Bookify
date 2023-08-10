@@ -22,3 +22,5 @@ res.render('homepage', {
 res.status(500).json(err);
 }
 });
+
+module.exports = router;
