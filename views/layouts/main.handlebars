@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/output.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Bookify</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>Welcome to the Four Seasons Museum</h1>
+    </header>
+    <nav>
+        <a href="../layouts/main.handlebars">Home</a>
+        <!-- If the user is logged in, show a logout button -->
+        {{#if loggedIn}}
+        <button id="logout" class="btn-no-style">Logout</button>
+        {{else}}
+        <!-- Otherwise, show a link to login -->
+        <a href="../partials/login.handlebars">Login</a>
+        {{/if}}
+    </nav>
+    <main>
+        <aside>
+            <h2>Enjoy the galleries!</h2>
+        </aside>
+        <div class="gallery">
+            {{{body}}}
+        </div>
+    </main>
+    <!-- If the user is logged in, load the JS script for when they logout -->
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
+
 </html>
