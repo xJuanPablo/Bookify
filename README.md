@@ -13,3 +13,5 @@ FRAMEWORK - TAILWIND
 
 APIS - CHATGPT, GOOGLEBOOKS
 
+TABLES -    USERS(id(autoincrement), firstname, lastname, username, email, password)
+            
