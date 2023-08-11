@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users } = require('../models/index')
+const { Users, Library, Reading_Entry } = require('../models/index')
 //TODO: Export function for Authentication
 
 //TODO: Place authentication function in route handler
@@ -28,7 +28,36 @@ router.get('/login', (req, res) => {
     return;
   }
 //TODO: Replace with handlebar login screen
-  res.render('login');
+  res.render('test');
+});
+
+router.get('/profile/:username', async (req,res)=>{
+  const username = req.params.username;
+  let id = 1
+  // const user = req.session.user;
+  // const username = user.username;
+  // const id = user.id
+  // const readingEntryData = await Reading_Entry.findByPk(id)
+  // const libraryData = await Library.findByPk(id)
+  const userData = await Users.findByPk(id, {
+    include: [{model: Library}, {model: Reading_Entry}]
+  })
+  const test = userData.libraries
+  const books = test.map((bookname) => bookname.get({ plain: true }));
+  // res.status(200).json(test)
+  res.render('profilepage', { username, books})
+})
+
+router.get('/profile/:username/library', async (req, res)=>{
+  res.render('library', { 
+    // params here
+  })
+});
+
+router.get('/analytics', async (req, res)=>{
+  res.render('analytics', { 
+    // params here
+  })
 });
 
 module.exports = router;
