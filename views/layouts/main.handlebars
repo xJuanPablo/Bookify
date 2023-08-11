@@ -11,68 +11,113 @@
 </head>
 
 <body>
-    <section class="bg-white dark:bg-gray-900">
-        <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-            <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new product</h2>
-            <form action="#">
-                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                    <div class="sm:col-span-2">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
-                            Name</label>
-                        <input type="text" name="name" id="name"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Type product name" required="">
-                    </div>
-                    <div class="w-full">
-                        <label for="brand"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
-                        <input type="text" name="brand" id="brand"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Product brand" required="">
-                    </div>
-                    <div class="w-full">
-                        <label for="price"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                        <input type="number" name="price" id="price"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="$2999" required="">
-                    </div>
-                    <div>
-                        <label for="category"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <select id="category"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select category</option>
-                            <option value="TV">TV/Monitors</option>
-                            <option value="PC">PC</option>
-                            <option value="GA">Gaming/Console</option>
-                            <option value="PH">Phones</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="item-weight"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item Weight
-                            (kg)</label>
-                        <input type="number" name="item-weight" id="item-weight"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="12" required="">
-                    </div>
-                    <div class="sm:col-span-2">
-                        <label for="description"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                        <textarea id="description" rows="8"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Your description here"></textarea>
-                    </div>
-                </div>
-                <button type="submit"
-                    class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                    Add product
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="https://flowbite.com/" class="flex items-center">
+                <img src="/bookify.png" class="h-8 mr-3" alt="Bookify Logo" />
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Bookify</span>
+            </a>
+            <div class="flex items-center md:order-2">
+                <button type="button"
+                    class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
+                    data-dropdown-placement="bottom">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
                 </button>
-            </form>
+                <!-- Dropdown menu -->
+                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+                    id="user-dropdown">
+                    <div class="px-4 py-3">
+                        <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                        <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                    </div>
+                    <ul class="py-2" aria-labelledby="user-menu-button">
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
+                                out</a>
+                        </li>
+                    </ul>
+                </div>
+                <button data-collapse-toggle="navbar-user" type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-user" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 1h15M1 7h15M1 13h15" />
+                    </svg>
+                </button>
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
+                <ul
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+                            aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="bg-white dark:bg-gray-900">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+            <h1
+                class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                We invest in your personal improvement!</h1>
+            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-300">Here at
+                <strong>Bookify</strong> we focus on reading and growth, effectively helping you track your progress and
+                help you achieve your goals and more.
+            </p>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                <a href="#"
+                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                    Get started
+                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </a>
+                <a href="#"
+                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                    Learn more
+                </a>
+            </div>
         </div>
     </section>
-    
+    {{{body}}}
 
 </body>
 
