@@ -1,5 +1,5 @@
 //require('dotenv').config();
-//const key = 'AIzaSyANF_jZMUut5yIGAX8NmtEjkqD0LWcgAhU';
+//const key = 'process.env.GOOGLE_API';
 
 //TODO: Placeholder searchbar Variable
 let searchBar = document.querySelector('#SearchBar');
