@@ -1,3 +1,4 @@
 DROP DATABASE IF EXISTS bookify_db;
 
 CREATE DATABASE bookify_db;
+
