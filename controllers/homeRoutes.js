@@ -1,24 +1,14 @@
 const router = require('express').Router();
-const { Users, Library, Reading_Entry } = require('../models/index')
-//TODO: Export function for Authentication
+const { Users, Library, Reading_Entry } = require('../models/index');
+const withAuth = require('../utils/auth');
 
-//TODO: Place authentication function in route handler
-router.get('/', (req,res)=>{
-
-  //TODO: replace "export" with data from models
+router.get('/', async (req,res)=>{
 //   const userData = await Users.findall({
-//     // Because it's the homepage I am excluding the need for a password
 //   attributes: { exclude: ['password']}
 // })
 // const users = userData.map((dataTwo)=> dataTwo.get({plain: true}));
 
-// res.render will render homepage from handlebar file
-//TODO: replace 'homepage' with handlebars template
-  res.render('homepage' 
-  // {
-  //   users,
-  //   logged_in: req.session.logged_in,}
-    );
+  res.render('homepage');
 });
 
 
@@ -27,11 +17,11 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-//TODO: Replace with handlebar login screen
-  res.render('test');
+
+  res.render('login');
 });
 
-router.get('/profile/:username', async (req,res)=>{
+router.get('/profile/:username', withAuth, async (req,res)=>{
   const username = req.params.username;
   let id = 1
   // const user = req.session.user;
