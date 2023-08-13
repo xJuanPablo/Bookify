@@ -1,51 +1,55 @@
 const router = require('express').Router();
-const { Users, Library, Reading_Entry } = require('../models/index')
-//TODO: Export function for Authentication
+const { Users, Library, Reading_Entry } = require('../models/index');
+const withAuth = require('../utils/auth');
 
-//TODO: Place authentication function in route handler
-router.get('/', (req,res)=>{
-
-  //TODO: replace "export" with data from models
-//   const userData = await Users.findall({
-//     // Because it's the homepage I am excluding the need for a password
-//   attributes: { exclude: ['password']}
-// })
-// const users = userData.map((dataTwo)=> dataTwo.get({plain: true}));
-
-// res.render will render homepage from handlebar file
-//TODO: replace 'homepage' with handlebars template
-  res.render('homepage' 
-  // {
-  //   users,
-  //   logged_in: req.session.logged_in,}
-    );
+router.get('/', async (req,res)=>{
+  res.render('homepage');
 });
 
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
-//TODO: Replace with handlebar login screen
-  res.render('test');
+  res.render('login');
 });
 
-router.get('/profile/:username', async (req,res)=>{
-  const username = req.params.username;
-  let id = 1
-  // const user = req.session.user;
-  // const username = user.username;
-  // const id = user.id
+router.get('/register', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('registration');
+});
+
+router.get('/profile/:username', withAuth, async (req,res)=>{
+  const findProfile = await Users.findOne({
+    where: { username: req.params.username }
+  });
+  if(!findProfile) {
+    res.status(404);
+    res.render('404');
+    return;
+  }
+  const user = findProfile;
+  const username = user.username;
+  const id = user.id
   // const readingEntryData = await Reading_Entry.findByPk(id)
   // const libraryData = await Library.findByPk(id)
+
   const userData = await Users.findByPk(id, {
-    include: [{model: Library}, {model: Reading_Entry}]
+  include: [{model: Library}, {model: Reading_Entry}]
   })
-  const test = userData.libraries
-  const books = test.map((bookname) => bookname.get({ plain: true }));
+
+  if(!userData){
+    res.status(404).json({ message: 'User not found' });
+    return;
+  }
+  // const test = userData.libraries
+  // const books = test.map((bookname) => bookname.get({ plain: true }));
   // res.status(200).json(test)
-  res.render('profilepage', { username, books})
+  res.render('dashboard', { username })
 })
 
 router.get('/profile/:username/library', async (req, res)=>{
