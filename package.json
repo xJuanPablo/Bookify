@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/seed.js"
+    "seed": "node seeds/seed.js",
+    "dev": "parcel views/homepage.handlebars",
+    "build": "parcel build views/homepage.handlebars"
   },
   "keywords": [],
   "author": "",
@@ -22,10 +24,13 @@
     "express-session": "^1.17.1",
     "handlebars": "^4.7.6",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "@cubejs-client/core": "^0.31.0"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "parcel": "^2.6.2"
+
   }
 }
