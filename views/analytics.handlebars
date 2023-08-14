@@ -157,24 +157,12 @@
         <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Leads generated per week</p>
       </div>
     </div>
-    <div>
-      <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
-        <svg class="w-2.5 h-2.5 mr-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
-        </svg>
-        42.5%
-      </span>
-    </div>
   </div>
 
   <div class="grid grid-cols-2">
     <dl class="flex items-center">
-        <dt class="text-gray-500 dark:text-gray-400 text-sm font-normal mr-1">Money spent:</dt>
+        <dt class="text-gray-500 dark:text-gray-400 text-sm font-normal mr-1">Pages read:</dt>
         <dd class="text-gray-900 text-sm dark:text-white font-semibold">$3,232</dd>
-    </dl>
-    <dl class="flex items-center justify-end">
-        <dt class="text-gray-500 dark:text-gray-400 text-sm font-normal mr-1">Conversion rate:</dt>
-        <dd class="text-gray-900 text-sm dark:text-white font-semibold">1.2%</dd>
     </dl>
   </div>
 
@@ -208,16 +196,8 @@
               <li>
                 <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
               </li>
-              <li>
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 90 days</a>
-              </li>
             </ul>
         </div>
-        <a
-          href="#"
-          class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
-          Leads Report
-          <svg class="w-2.5 h-2.5 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
           </svg>
         </a>
@@ -229,7 +209,7 @@
   // ApexCharts options and config
   window.addEventListener("load", function() {
     const options = {
-          colors: ["#1A56DB", "#FDBA8C"],
+          colors: ["#1A56DB"],
           series: [
             {
               name: "Organic",
@@ -242,19 +222,6 @@
                 { x: "Fri", y: 122 },
                 { x: "Sat", y: 323 },
                 { x: "Sun", y: 111 },
-              ],
-            },
-            {
-              name: "Social media",
-              color: "#FDBA8C",
-              data: [
-                { x: "Mon", y: 232 },
-                { x: "Tue", y: 113 },
-                { x: "Wed", y: 341 },
-                { x: "Thu", y: 224 },
-                { x: "Fri", y: 522 },
-                { x: "Sat", y: 411 },
-                { x: "Sun", y: 243 },
               ],
             },
           ],
