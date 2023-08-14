@@ -1,24 +1,22 @@
 const router = require('express').Router();
 const { Library } = require('../../models')
 
-router.post('/library', async (req,res) =>{
-try{
-  const libraryEntry = await Library.create({
-    ...req.body,
-    book_name: req.session.book_name,
-      author: req.session.author,
-      isbn: req.session.isbn,
-      genre: req.session.genre,
-      pages: req.session.pages
+router.post('/library', async (req, res) => {
+  try {
+    const userId = req.session.user_id;
 
+    const libraryEntry = await Library.create({
+      ...req.body,
+      user_id: userId,
+    });
 
-
-  })
-res.status(200).json(libraryEntry);
+    res.status(200).json(libraryEntry);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+module.exports = router;
 
 
 //TODO: Do we need a delete function for the library
