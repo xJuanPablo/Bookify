@@ -3,7 +3,13 @@ const { Users, Library, Reading_Entry } = require('../models/index');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req,res)=>{
-  res.render('homepage');
+  const user = req.session.user;
+  const loggedIn = req.session.loggedIn;
+  if (user){
+    res.render('homepage', {loggedIn, firstName: user.firstName, username: user.username});
+  } else {
+    res.render('homepage', {loggedIn});
+  }
 });
 
 
@@ -24,6 +30,7 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/profile/:username', withAuth, async (req,res)=>{
+  const loggedIn = req.session.loggedIn;
   const findProfile = await Users.findOne({
     where: { username: req.params.username }
   });
@@ -35,6 +42,7 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
   const user = findProfile;
   const username = user.username;
   const id = user.id
+  const firstName = user.firstName
   // const readingEntryData = await Reading_Entry.findByPk(id)
   // const libraryData = await Library.findByPk(id)
 
@@ -49,19 +57,17 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
   // const test = userData.libraries
   // const books = test.map((bookname) => bookname.get({ plain: true }));
   // res.status(200).json(test)
-  res.render('dashboard', { username })
+  res.render('dashboard', { username, loggedIn, firstName })
 })
 
 router.get('/profile/:username/library', async (req, res)=>{
-  res.render('library', { 
-    // params here
-  })
+  const loggedIn = req.session.loggedIn;
+  res.render('library', { username, loggedIn, firstName })
 });
 
 router.get('/analytics', async (req, res)=>{
-  res.render('analytics', { 
-    // params here
-  })
+  const loggedIn = req.session.loggedIn;
+  res.render('analytics', { username, loggedIn, firstName })
 });
 
 module.exports = router;
