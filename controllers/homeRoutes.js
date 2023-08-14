@@ -85,7 +85,43 @@ router.get('/profile/:username/library', async (req, res)=>{
 
 router.get('/analytics', async (req, res)=>{
   const loggedIn = req.session.loggedIn;
+  const user = req.session.user;
+  const username = user.username;
+  const firstName = user.firstName;
   res.render('analytics', { username, loggedIn, firstName })
+});
+
+router.get('/profile/:username/test', async (req, res)=>{
+  const loggedIn = req.session.loggedIn;
+  const user = req.session.user;
+  const username = user.username;
+  const firstName = user.firstName;
+  const id = user.id;
+
+  const userData = await Users.findByPk(id, {
+    include: {model: Library}
+    })
+  const libraryData = userData.libraries
+  const allBooks = libraryData.map((book_name) => book_name.get({ plain: true }));
+  const currentlyReading = libraryData.filter((book) => book.currently_reading).map((book) => book.get({ plain: true }));
+  const completedReading = libraryData.filter((book) => book.completed).map((book) => book.get({ plain: true }));
+  // res.json(books)
+  if(allBooks.length === 0) {
+    const noBooks = true
+    res.render('test', { username, loggedIn, firstName, noBooks})
+  } else {
+    res.render('test', { username, loggedIn, firstName, allBooks, currentlyReading, completedReading})
+  }
+});
+
+router.get('*', async (req, res)=>{
+  const loggedIn = req.session.loggedIn;
+  const user = req.session.user;
+  const username = user.username;
+  const firstName = user.firstName;
+  res.status(404);
+  res.render('404', { username, loggedIn, firstName });
+  return;
 });
 
 module.exports = router;

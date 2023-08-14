@@ -1,46 +1,39 @@
 const router = require('express').Router();
 const { Library } = require('../../models')
 
-router.post('/library', async (req,res) =>{
+router.post('/', async (req,res) =>{
 try{
   const libraryEntry = await Library.create({
-    ...req.body,
-    book_name: req.session.book_name,
-      author: req.session.author,
-      isbn: req.session.isbn,
-      genre: req.session.genre,
-      pages: req.session.pages
-
-
-
+    ...req.body
   })
-res.status(200).json(libraryEntry);
+  res.status(200).json(libraryEntry);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
 
-//TODO: Do we need a delete function for the library
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const projectData = await Project.destroy({
-//       where: {
-//         id: req.params.id,
-//         user_id: req.session.user_id,
-//       },
-//     });
 
-//     if (!projectData) {
-//       res.status(404).json({ message: 'No project found with this id!' });
-//       return;
-//     }
+router.delete('/:id', async (req, res) => {
+  try {
+    const user = req.session.user
+    const libraryBook = await Library.destroy({
+      where: {
+        id: req.params.id,
+        user_id: user.id,
+      },
+    });
 
-//     res.status(200).json(projectData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    if (!libraryBook) {
+      res.status(404).json({ message: 'No project found with this id!' });
+      return;
+    }
+
+    res.status(200).json(libraryBook);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 // const insertBookToLibrary = (bookData) => {

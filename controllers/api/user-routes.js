@@ -6,11 +6,7 @@ const { Op } = require('sequelize');
 router.post('/', async (req, res) => {
   try {
     const dbUserData = await Users.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName
+      ...req.body
     });
 
     req.session.save(() => {
