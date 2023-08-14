@@ -62,7 +62,25 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
 
 router.get('/profile/:username/library', async (req, res)=>{
   const loggedIn = req.session.loggedIn;
-  res.render('library', { username, loggedIn, firstName })
+  const user = req.session.user;
+  const username = user.username;
+  const firstName = user.firstName;
+  const id = user.id;
+
+  const userData = await Users.findByPk(id, {
+    include: {model: Library}
+    })
+  const libraryData = userData.libraries
+  const allBooks = libraryData.map((book_name) => book_name.get({ plain: true }));
+  const currentlyReading = libraryData.filter((book) => book.currently_reading).map((book) => book.get({ plain: true }));
+  const completedReading = libraryData.filter((book) => book.completed).map((book) => book.get({ plain: true }));
+  // res.json(books)
+  if(allBooks.length === 0) {
+    const noBooks = true
+    res.render('library', { username, loggedIn, firstName, noBooks})
+  } else {
+    res.render('library', { username, loggedIn, firstName, allBooks, currentlyReading, completedReading})
+  }
 });
 
 router.get('/analytics', async (req, res)=>{

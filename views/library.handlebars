@@ -1,8 +1,29 @@
 <script src="https://cdn.tailwindcss.com"></script>
-<div class="container px-2 bg-white">
-    <div class="w-5/6 inline-flex flex-nowrap" id="currently_reading">
+{{#if noBooks}}
+<h1>YOU GOT SUPER NO BITCHES</h1>
+{{/if}}
+{{#if allBooks}}
+<div class="container mx-auto bg-stone-400">
+    <div class="w-full inline-flex flex-nowrap" id="currently_reading">
+        <ul
+            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs">
+            {{#each currentlyReading as |book| }}
+            <li>
+                <div class="w-64 h-64 overflow-hidden justify-center relative">
+                    <img class="w-64 h-64 justify-center relative"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+                        class="absolute inset-0 bg-cover bg-center z-0"></img>
+                    <div
+                        class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">{{book.book_name}}</div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <div class="w-full inline-flex flex-nowrap" id="will_read">
         <ul
             class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs">
+            {{#each allBooks as |book|}}
             <li>
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
                     <img class="w-64 h-64 justify-center relative"
@@ -10,29 +31,16 @@
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
                         class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
-                        Dwayne</div>
+                        {{book.book_name}}</div>
                 </div>
             </li>
+            {{/each}}
         </ul>
     </div>
-    <div class="w-5/6 inline-flex flex-nowrap" id="will_read">
-        <ul
-            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs">
-            <li>
-                <div class="w-64 h-64 overflow-hidden justify-center relative">
-                    <img class="w-64 h-64 justify-center relative"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
-                        class="absolute inset-0 bg-cover bg-center z-0"></img>
-                    <div
-                        class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
-                        Dwayne</div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="w-5/6 inline-flex flex-nowrap" id="has_read">
+    <div class="w-full inline-flex flex-nowrap" id="has_read">
         <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="will_read">
+            {{#each completedReading as |book|}}
             <li>
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
                     <img class="w-64 h-64 justify-center relative"
@@ -40,9 +48,11 @@
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
                         class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
-                        Dwayne</div>
+                        {{book.book_name}}</div>
                 </div>
             </li>
+            {{/each}}
         </ul>
     </div>
 </div>
+{{/if}}
