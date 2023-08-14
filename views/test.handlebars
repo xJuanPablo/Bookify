@@ -1,0 +1,9 @@
+<ul id="book-list">
+    {{#each allBooks as |book|}}
+    <li data-entry-id="{{book.id}}">
+        {{book.book_name}} <button class="deleteMe">Delete</button>
+    </li>
+    {{/each}}
+</ul>
+
+<script src="/js/library.js"></script>
