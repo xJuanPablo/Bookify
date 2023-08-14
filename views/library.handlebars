@@ -1,5 +1,5 @@
 {{#if noBooks}}
-<h1>YOU GOT SUPER NO BITCHES</h1>
+<h1 class="bg-red-500 w-96 mx-auto text-center text-white my-5 font-sans font-semibold text-2xl rounded-lg transition ease-out-in delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-black duration-300">YOU GOT SUPER NO BITCHES</h1>
 {{/if}}
 {{#if allBooks}}
 <div class="container mx-auto bg-stone-400">
@@ -13,7 +13,8 @@
                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
-                        class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">{{book.book_name}}</div>
+                        class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
+                        {{book.book_name}}</div>
                 </div>
             </li>
             {{/each}}
