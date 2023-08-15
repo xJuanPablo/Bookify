@@ -6,6 +6,9 @@ module.exports = {
     './node_modules/flowbite/**/*.js',
   ],
   theme: {
+    fontFamily: {
+      'display': ['Oswald']
+    },
     extend: {
       backgroundImage: {
         'dicks': "url('assets/DICKS.png')",

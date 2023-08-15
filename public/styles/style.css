@@ -24,3 +24,7 @@
     z-index: 1;
     /* Add styling for your content */
 }
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
