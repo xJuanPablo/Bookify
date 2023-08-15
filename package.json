@@ -2,6 +2,9 @@
   "name": "bookify",
   "version": "1.0.0",
   "description": "8/10 - BASE FILE/FILE STRUCTURE DONE, ANY MOCK UP STUFF (DATABASE) | ALL PLANNING DONE AND BASIC STUFF\r 8/11 - ??????? \r 8/12 - ???????\r 8/13 - ???????\r 8/14 - ???????\r 8/15 - BY LUNCH HAVE MOST IF NOT ALL COMPLETED - PRESENTATION REST OF THE DAY\r 8/16 - COMPELTED",
+  "engines": {
+    "node": "18.17.0"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
