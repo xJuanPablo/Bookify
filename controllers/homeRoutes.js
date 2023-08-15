@@ -117,11 +117,17 @@ router.get('/profile/:username/test', async (req, res)=>{
 router.get('*', async (req, res)=>{
   const loggedIn = req.session.loggedIn;
   const user = req.session.user;
-  const username = user.username;
-  const firstName = user.firstName;
-  res.status(404);
-  res.render('404', { username, loggedIn, firstName });
-  return;
+  if(user) {
+    const username = user.username;
+    const firstName = user.firstName;
+    res.status(404);
+    res.render('404', { username, loggedIn, firstName });
+    return;
+  } else {
+    res.status(404);
+    res.render('404');
+    return;
+  }
 });
 
 module.exports = router;
