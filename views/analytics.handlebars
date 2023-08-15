@@ -76,12 +76,13 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
   // ApexCharts options and config
   window.addEventListener("load", function() {
     const getChartOptions = () => {
         return {
-          series: [52.8, 26.8, 20.4],
+          series: {[52.8, 26.8, 20.4]},
           colors: ["#1C64F2", "#16BDCA", "#9061F9"],
           chart: {
             height: 420,
