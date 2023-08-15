@@ -32,7 +32,8 @@ Library.init(
         },
         currently_reading: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: true,
+            defaultValue: false
         },
         genre: {
             type: DataTypes.STRING,
@@ -47,12 +48,14 @@ Library.init(
         },
         completed: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: true,
+            defaultValue: false,
         },
-        // image: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false
-        // }
+        img: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            defaultValue: 'https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg'
+        }
     },
     {
         sequelize,

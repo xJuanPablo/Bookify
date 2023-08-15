@@ -8,25 +8,28 @@
 </head>
 <body>
 
-
-
-
-
-
   <input type="text" placeholder="Search.." id="SearchBar">
-<button id="searchButton">search</button>
-<br><br><br>
+  <button id="searchButton">Search</button>
 
+  <div id="renderImg"></div>
 
-<div id="checkmarkContainer"><input type="checkbox" id="yes" name="vehicle1" value="yes">
-  <label for="vehicle1"> Yes</label><br>
-  <input type="checkbox" id="vehicle2" name="no" value="no">
-  <label for="vehicle2"> no </label></div>
+  <div id="checkmarkContainer" style="display: none;">
+    <label>
+      <input type="radio" name="choice" value="yes" id="yes">
+      Yes, this is the book I'm looking for!
+    </label>
+    <label>
+      <input type="radio" name="choice" value="no" id="no">
+      No, this isn't it.
+    </label>
+  </div>
 
+  <div id="confirmButtonContainer" style="display: none;">
+    <button id="confirmButton">Confirm</button>
+  </div>
 
-<div id="renderImg"></div>
+  <div id="bookContainer"></div>
 
-
-<script src="./index.js"></script>
+<script src="./index2.js"></script>
 </body>
 </html>

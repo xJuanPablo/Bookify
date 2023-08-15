@@ -13,7 +13,7 @@
             <li data-entry-id="{{book.id}}">
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
                     <img class="w-64 h-64 justify-center relative"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+                        src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
                         class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
@@ -37,9 +37,9 @@
             id="book-list">
             {{#each allBooks as |book|}}
             <li data-entry-id="{{book.id}}">
-                <div class="w-64 h-64 overflow-hidden justify-center relative">
-                    <img class="w-64 h-64 justify-center relative"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+                <div class="overflow-hidden justify-center relative">
+                    <img class="justify-center relative"
+                        src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
                         class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
@@ -63,9 +63,9 @@
             id="compelted-list">
             {{#each completedReading as |book|}}
             <li data-entry-id="{{book.id}}">
-                <div class="w-64 h-64 overflow-hidden justify-center relative">
-                    <img class="w-64 h-64 justify-center relative"
-                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
+                <div class="overflow-hidden justify-center relative">
+                    <img class="justify-center relative"
+                        src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
                         class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
@@ -87,22 +87,40 @@
 </div>
 {{/if}}
 
+<input type="text" placeholder="Search.." id="SearchBar">
 <button type="button"
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-    Add Book
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="searchButton">
+    Search for a Book
     <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
         width="20" height="20" fill="none" viewBox="0 0 20 20">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
 </button>
+<div id="renderImg"></div>
+
+<div id="checkmarkContainer" style="display: none;">
+    <label>
+        <input type="radio" name="choice" value="yes" id="yes">
+        Yes, this is the book I'm looking for!
+    </label>
+    <label>
+        <input type="radio" name="choice" value="no" id="no">
+        No, this isn't it.
+    </label>
+</div>
+
+<div id="confirmButtonContainer" style="display: none;">
+    <button type="button"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="confirmButton">
+        Confirm
+        <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            width="20" height="20" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+    </button>
+</div>
+
 
 <script src="/js/library.js"></script>
-
-                <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-                    Delete Book
-                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />

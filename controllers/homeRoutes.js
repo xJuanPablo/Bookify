@@ -88,7 +88,22 @@ router.get('/analytics', async (req, res)=>{
   const user = req.session.user;
   const username = user.username;
   const firstName = user.firstName;
-  res.render('analytics', { username, loggedIn, firstName })
+  const libraryData = await Library.findAll()
+  const totalBooks = libraryData.length;
+  const genres = {};
+  libraryData.forEach(book => {
+    if (genres.hasOwnProperty(book.genre)) {
+      genres[book.genre]++
+    } else {
+      genres[book.genre] = 1;
+    }
+  });
+  const genreData = Object.keys(genres).map(genre => {
+    const percentage = (genreCounts[genre] / totalBooks) * 100;
+    return { genre, percentage };
+  });
+  // const allBooks = libraryData.map((books) => books.get({ plain: true }));
+  res.render('analytics', { username, loggedIn, firstName, genreData })
 });
 
 router.get('/profile/:username/test', async (req, res)=>{
