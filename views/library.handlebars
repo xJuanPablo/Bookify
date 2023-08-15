@@ -7,8 +7,8 @@
 {{#if allBooks}}
 <div class="container mx-auto bg-stone-400" style="background-image: '../assets/DICKS.png'; height: 400px;">
     <div class="w-full inline-flex flex-nowrap">
-        <ul
-            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs" id="currently-list">
+        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+            id="currently-list">
             {{#each currentlyReading as |book| }}
             <li data-entry-id="{{book.id}}">
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
@@ -21,10 +21,11 @@
                 </div>
                 <button type="button"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-                    Remove Book
-                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    Delete Book
+                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                 </button>
             </li>
@@ -32,8 +33,8 @@
         </ul>
     </div>
     <div class="w-full inline-flex flex-nowrap">
-        <ul
-            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs" id="book-list">
+        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+            id="book-list">
             {{#each allBooks as |book|}}
             <li data-entry-id="{{book.id}}">
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
@@ -46,10 +47,11 @@
                 </div>
                 <button type="button"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-                    Remove Book
-                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    Delete Book
+                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                 </button>
             </li>
@@ -57,7 +59,8 @@
         </ul>
     </div>
     <div class="w-full inline-flex flex-nowrap" id="has_read">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs" id="compelted-list">
+        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+            id="compelted-list">
             {{#each completedReading as |book|}}
             <li data-entry-id="{{book.id}}">
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
@@ -70,10 +73,11 @@
                 </div>
                 <button type="button"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-                    Remove Book
-                    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    Delete Book
+                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                 </button>
             </li>
@@ -84,12 +88,21 @@
 {{/if}}
 
 <button type="button"
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
     Add Book
-    <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+        width="20" height="20" fill="none" viewBox="0 0 20 20">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 5h12m0 0L9 1m4 4L9 9" />
+            d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
 </button>
 
 <script src="/js/library.js"></script>
+
+                <button type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
+                    Delete Book
+                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
