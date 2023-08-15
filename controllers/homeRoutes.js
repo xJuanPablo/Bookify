@@ -99,7 +99,7 @@ router.get('/analytics', withAuth, async (req, res)=>{
     }
   });
   const genreData = Object.keys(genres).map(genre => {
-    const percentage = (genreCounts[genre] / totalBooks) * 100;
+    const percentage = (genres[genre] / totalBooks) * 100;
     return { genre, percentage };
   });
   // const allBooks = libraryData.map((books) => books.get({ plain: true }));
