@@ -118,3 +118,8 @@ renderImg.appendChild(bookAuthor);
 //     checkmarkDiv.style.display = "none";
 //   }
 // };
+
+const renderCheckBox = () => {
+  const checkmarkContainer = document.querySelector('#checkmarkContainer');
+  checkmarkContainer.style.display = 'block';
+}
