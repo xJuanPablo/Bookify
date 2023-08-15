@@ -5,7 +5,8 @@ router.post('/', async (req,res) =>{
 try{
   console.log('Incoming request body:', req.body);
   const libraryEntry = await Library.create({
-    ...req.body
+    ...req.body,
+    user_id: req.session.user_id
   })
   res.status(200).json(libraryEntry);
   } catch (err) {

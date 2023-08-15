@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Users } = require('../../models');
 const { Op } = require('sequelize');
-const userModule = require('../../public/js/user');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -56,7 +55,7 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
-    userModule.setUser(dbUserData.id);
+
     req.session.save(() => {
       req.session.user = dbUserData;
       req.session.loggedIn = true;

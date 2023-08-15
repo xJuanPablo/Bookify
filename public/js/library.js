@@ -1,94 +1,7 @@
-// const currentlyReadingList = document.getElementById('currently-list'); 
-// const futureReadingList = document.getElementById('book-list'); 
-// const completedReadingList = document.getElementById('compelted-list'); 
-
-// currentlyReadingList.addEventListener('click', async (event) => {
-//     event.preventDefault;
-//     const deleteButton = event.target.closest('.deleteMe');
-  
-//     if (deleteButton) {
-//       const entryId = deleteButton.parentElement.dataset.entryId;
-      
-//         try {
-//             const response = await fetch(`/api/library/${entryId}`, {
-//             method: 'DELETE',
-//             credentials: 'include'
-//             });
-
-//             if (response.ok) {
-//                 console.log('Entry deleted successfully');
-//                 document.location.reload();
-//             } else {
-//                 const errorMessage = await response.json();
-//                 console.error(errorMessage.message);
-//             }
-//         } catch (error) {
-//             console.error('An error occurred:', error);
-//         }
-//     }
-// });
-
-// futureReadingList.addEventListener('click', async (event) => {
-//     event.preventDefault;
-//     const deleteButton = event.target.closest('.deleteMe');
-  
-//     if (deleteButton) {
-//       const entryId = deleteButton.parentElement.dataset.entryId;
-      
-//         try {
-//             const response = await fetch(`/api/library/${entryId}`, {
-//             method: 'DELETE',
-//             credentials: 'include'
-//             });
-
-//             if (response.ok) {
-//                 console.log('Entry deleted successfully');
-//                 document.location.reload();
-//             } else {
-//                 const errorMessage = await response.json();
-//                 console.error(errorMessage.message);
-//             }
-//         } catch (error) {
-//             console.error('An error occurred:', error);
-//         }
-//     }
-// });
-
-// completedReadingList.addEventListener('click', async (event) => {
-//     event.preventDefault;
-//     const deleteButton = event.target.closest('.deleteMe');
-  
-//     if (deleteButton) {
-//       const entryId = deleteButton.parentElement.dataset.entryId;
-      
-//         try {
-//             const response = await fetch(`/api/library/${entryId}`, {
-//             method: 'DELETE',
-//             credentials: 'include'
-//             });
-
-//             if (response.ok) {
-//                 console.log('Entry deleted successfully');
-//                 document.location.reload();
-//             } else {
-//                 const errorMessage = await response.json();
-//                 console.error(errorMessage.message);
-//             }
-//         } catch (error) {
-//             console.error('An error occurred:', error);
-//         }
-//     }
-// });
-
-// ++++++++++++++++++++++++++++++++====================================+++++++++++++++++++++++++++++++++++
-const userModule = require('/js/user'); 
 const key = 'AIzaSyANF_jZMUut5yIGAX8NmtEjkqD0LWcgAhU'
 let searchBar = document.querySelector('#SearchBar');
 let searchButton = document.querySelector('#searchButton');
 let bookData = {};
-
-const library = [];
-
 
 // This function accepts the book name and formats it to the api's preference.
 const searchFormat = (search) => {
@@ -99,10 +12,8 @@ const searchFormat = (search) => {
   //This makes the array into a string combined with a +
   const addPlus = removeCharacters.join('+');
   //The "Promise.resolve()" allows us to use the function  in a chain of promises.
-  return Promise.resolve(addPlus);
+    return Promise.resolve(addPlus);
 };
-
-
 
 // This function locates the checkmarkContainer div and makes it visible.
 const renderCheckBox = () => {
@@ -110,13 +21,8 @@ const renderCheckBox = () => {
   checkmarkContainer.style.display = 'block';
 }
 
-
-
-
-
 //This searches the google API and returns the data, putting it into an object.
 const bookAPI = async (formattedSearch) => {
-  const userId = userModule.getUserId()
   return await fetch(`https://www.googleapis.com/books/v1/volumes?q=${formattedSearch}&key=${key}`, {
     method: 'GET'
   })
@@ -130,7 +36,6 @@ const bookAPI = async (formattedSearch) => {
     const img = data.items[0].volumeInfo.imageLinks.thumbnail;
     
     bookData = {
-        user_id: userId,
         book_name: bookName,
         author: author,
         isbn: isbn,
@@ -187,7 +92,7 @@ async function addBookToLibrary(bookData) {
 
         if (response.ok) {
             console.log('Book added successfully');
-            // document.location.reload();
+            document.location.reload();
         } else {
             const errorMessage = await response.json();
             console.error(errorMessage.message);
@@ -195,23 +100,6 @@ async function addBookToLibrary(bookData) {
     } catch (error) {
         console.error('An error occurred:', error);
     }
-
-    //   const bookContainer = document.getElementById('bookContainer');
-//   library.push(bookData);
-  
-//   const addedBookElement = document.createElement('div');
-  
-//   const bookTitle = document.createElement('h3');
-//   bookTitle.textContent = bookData.book_name;
-  
-//   const bookCover = document.createElement('img');
-//   bookCover.src = bookData.img;
-//   bookCover.alt = 'Book Cover';
-  
-//   addedBookElement.appendChild(bookCover);
-//   addedBookElement.appendChild(bookTitle);
-  
-//   bookContainer.appendChild(addedBookElement);
 }
 
 
