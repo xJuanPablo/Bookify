@@ -3,3 +3,24 @@
 @tailwind utilities;
 
 @import 'tailwindcss/tailwind.css';
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+}
+
+#video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    /* Add styling for your content */
+}
