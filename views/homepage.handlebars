@@ -1,18 +1,27 @@
-<script src="https://cdn.tailwindcss.com"></script> 
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 <section>
     <div class="py-8 px-4 mx-auto h-screen text-center lg:py-16 video-container">
         <video autoplay muted loop id="video-background">
-        <source src="/assets/Library Video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+            <source src="/assets/Library Video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
-        <div class="content bg-stone-200 bg-opacity-90 pb-2 w-3/6 mx-auto rounded-md border-stone-100 border-2">
-            <h1
-                class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-                Bookify</h1>
+        <div class="content mx-48 -my-20 bg-stone-200 bg-opacity-90 pb-2 w-3/6 rounded-md border-stone-100 border-2">
+            <h1 class="mb-4 drop-shadow-lg text-6xl font-extrabold tracking-tight leading-snug text-gray-900 md:text-5xl lg:text-6xl dark:bg-gradient-to-r from-green-400 via-green-500 to-stone-900 bg-clip-text text-transparent"
+                id="myElement"></h1>
             <h5
                 class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-2xl dark:text-white">
                 Where Words Become Journeys</h5>
-            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-4 dark:text-black">Welcome to <strong>Bookify</strong> where the love of reading meets the power of data. We're dedicated to revolutionizing your reading experience by providing a seamless platform for tracking your reading habits, managing your book collection, and diving deep into the worlds of literature. <strong>Bookify</strong> empowers you to explore new genres, set reading goals, and capture your insights as you journey through countless pages. From the classics to contemporary bestsellers, our mission is to enhance your reading journey, offering insights into your reading patterns and suggesting personalized recommendations. Join us in celebrating the art of reading while embracing the modern era of data-driven insights. Embark on your literary adventure with <strong>Bookify</strong>, and let your reading habits shape a new chapter of your life.
+            <p class="indent-8 mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-4 dark:text-black">Welcome to
+                <strong>Bookify</strong> where the love of reading meets the power of data. We're dedicated to
+                revolutionizing your reading experience by providing a seamless platform for tracking your reading
+                habits, managing your book collection, and diving deep into the worlds of literature.
+                <strong>Bookify</strong> empowers you to explore new genres, set reading goals, and capture your
+                insights as you journey through countless pages. From the classics to contemporary bestsellers, our
+                mission is to enhance your reading journey, offering insights into your reading patterns and suggesting
+                personalized recommendations. Join us in celebrating the art of reading while embracing the modern era
+                of data-driven insights. Embark on your literary adventure with <strong>Bookify</strong>, and let your
+                reading habits shape a new chapter of your life.
             </p>
             <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                 <a href="/register"
@@ -32,229 +41,10 @@
                             d="M1 5h12m0 0L9 1m4 4L9 9" />
                     </svg>
                 </a>
-                
+
             </div>
         </div>
     </div>
-    <script src="https://cdn.tailwindcss.com"></script>
-        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-            <!-- Line Chart -->
-            <div class="py-6" id="pie-chart"></div>
-
-            <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
-                <div class="flex justify-between items-center pt-5">
-                <!-- Button -->
-                <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                        <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
-                        </li>
-                        <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
-                        </li>
-                        <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
-                        </li>
-                        <li>
-                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
-                        </li>
-                    </ul>
-                </div>
-                </div>
-                </div>
-            </div>
-            </div>
-
-
-            <script>
-            // ApexCharts options and config
-            window.addEventListener("load", function() {
-                const getChartOptions = () => {
-                    return {
-                    series: [10, 20, 20, 20, 30],
-                    colors: ["#1C64F2", "#16BDCA", "#9061F9"],
-                    chart: {
-                        height: 420,
-                        width: "100%",
-                        type: "pie",
-                    },
-                    stroke: {
-                        colors: ["white"],
-                        lineCap: "",
-                    },
-                    plotOptions: {
-                        pie: {
-                        labels: {
-                            show: true,
-                        },
-                        size: "100%",
-                        dataLabels: {
-                            offset: -25
-                        }
-                        },
-                    },
-                    labels: ["Fiction", "Non-Fiction", "Romance", "Biography", "Horror"],
-                    dataLabels: {
-                        enabled: true,
-                        style: {
-                        fontFamily: "Inter, sans-serif",
-                        },
-                    },
-                    legend: {
-                        position: "bottom",
-                        fontFamily: "Inter, sans-serif",
-                    },
-                    yaxis: {
-                        labels: {
-                        formatter: function (value) {
-                            return value + "%"
-                        },
-                        },
-                    },
-                    xaxis: {
-                        labels: {
-                        formatter: function (value) {
-                            return value  + "%"
-                        },
-                        },
-                        axisTicks: {
-                        show: false,
-                        },
-                        axisBorder: {
-                        show: false,
-                        },
-                    },
-                    }
-                }
-
-                if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
-                    const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
-                    chart.render();
-                }
-            });
-            </script>
-
-            <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-            <div class="flex justify-between pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
-                <div class="flex items-center">
-                <div class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center mr-3">
-                    <svg class="w-6 h-6 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 19">
-                    <path d="M14.5 0A3.987 3.987 0 0 0 11 2.1a4.977 4.977 0 0 1 3.9 5.858A3.989 3.989 0 0 0 14.5 0ZM9 13h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z"/>
-                    <path d="M5 19h10v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2ZM5 7a5.008 5.008 0 0 1 4-4.9 3.988 3.988 0 1 0-3.9 5.859A4.974 4.974 0 0 1 5 7Zm5 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm5-1h-.424a5.016 5.016 0 0 1-1.942 2.232A6.007 6.007 0 0 1 17 17h2a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5ZM5.424 9H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h2a6.007 6.007 0 0 1 4.366-5.768A5.016 5.016 0 0 1 5.424 9Z"/>
-                    </svg>
-                </div>
-                <div>
-                    <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1"></h5>
-                    <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Pages read per week</p>
-                </div>
-                </div>
-            </div>
-
-            <div id="column-chart"></div>
-                <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
-                </div>
-            </div>
-
-            <script>
-            // ApexCharts options and config
-            window.addEventListener("load", function() {
-                const options = {
-                    colors: ["#1A56DB"],
-                    series: [
-                        {
-                        name: "Pages Read",
-                        color: "#1A56DB",
-                        data: [
-                            { x: "Mon", y: 34 },
-                            { x: "Tue", y: 10 },
-                            { x: "Wed", y: 63 },
-                            { x: "Thu", y: 120 },
-                            { x: "Fri", y: 42 },
-                            { x: "Sat", y: 5 },
-                            { x: "Sun", y: 37 },
-                        ],
-                        },
-                    ],
-                    chart: {
-                        type: "bar",
-                        height: "320px",
-                        fontFamily: "Inter, sans-serif",
-                        toolbar: {
-                        show: false,
-                        },
-                    },
-                    plotOptions: {
-                        bar: {
-                        horizontal: false,
-                        columnWidth: "70%",
-                        borderRadiusApplication: "end",
-                        borderRadius: 8,
-                        },
-                    },
-                    tooltip: {
-                        shared: true,
-                        intersect: false,
-                        style: {
-                        fontFamily: "Inter, sans-serif",
-                        },
-                    },
-                    states: {
-                        hover: {
-                        filter: {
-                            type: "darken",
-                            value: 1,
-                        },
-                        },
-                    },
-                    stroke: {
-                        show: true,
-                        width: 0,
-                        colors: ["transparent"],
-                    },
-                    grid: {
-                        show: false,
-                        strokeDashArray: 4,
-                        padding: {
-                        left: 2,
-                        right: 2,
-                        top: -14
-                        },
-                    },
-                    dataLabels: {
-                        enabled: false,
-                    },
-                    legend: {
-                        show: false,
-                    },
-                    xaxis: {
-                        floating: false,
-                        labels: {
-                        show: true,
-                        style: {
-                            fontFamily: "Inter, sans-serif",
-                            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-                        }
-                        },
-                        axisBorder: {
-                        show: false,
-                        },
-                        axisTicks: {
-                        show: false,
-                        },
-                    },
-                    yaxis: {
-                        show: false,
-                    },
-                    fill: {
-                        opacity: 1,
-                    },
-                    }
-
-                    if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
-                    const chart = new ApexCharts(document.getElementById("column-chart"), options);
-                    chart.render();
-                    }
-            });
-            </script>
-            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </section>
+
+<script src="/js/karte.js"></script>
