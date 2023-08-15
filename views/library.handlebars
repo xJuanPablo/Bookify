@@ -5,12 +5,12 @@
     YOU GOT SUPER NO BITCHES</h1>
 {{/if}}
 {{#if allBooks}}
-<div class="container mx-auto bg-stone-400">
-    <div class="w-full inline-flex flex-nowrap" id="currently_reading">
+<div class="container mx-auto bg-stone-400" style="background-image: '../assets/DICKS.png'; height: 400px;">
+    <div class="w-full inline-flex flex-nowrap">
         <ul
-            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs">
+            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs" id="currently-list">
             {{#each currentlyReading as |book| }}
-            <li>
+            <li data-entry-id="{{book.id}}">
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
                     <img class="w-64 h-64 justify-center relative"
                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
@@ -20,8 +20,8 @@
                         {{book.book_name}}</div>
                 </div>
                 <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Choose plan
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
+                    Remove Book
                     <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -31,11 +31,11 @@
             {{/each}}
         </ul>
     </div>
-    <div class="w-full inline-flex flex-nowrap" id="will_read">
+    <div class="w-full inline-flex flex-nowrap">
         <ul
-            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs">
+            class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs" id="book-list">
             {{#each allBooks as |book|}}
-            <li>
+            <li data-entry-id="{{book.id}}">
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
                     <img class="w-64 h-64 justify-center relative"
                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
@@ -45,8 +45,8 @@
                         {{book.book_name}}</div>
                 </div>
                 <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Choose plan
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
+                    Remove Book
                     <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -57,10 +57,9 @@
         </ul>
     </div>
     <div class="w-full inline-flex flex-nowrap" id="has_read">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
-            id="will_read">
+        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs" id="compelted-list">
             {{#each completedReading as |book|}}
-            <li>
+            <li data-entry-id="{{book.id}}">
                 <div class="w-64 h-64 overflow-hidden justify-center relative">
                     <img class="w-64 h-64 justify-center relative"
                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg"
@@ -70,8 +69,8 @@
                         {{book.book_name}}</div>
                 </div>
                 <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Choose plan
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
+                    Remove Book
                     <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M1 5h12m0 0L9 1m4 4L9 9" />
@@ -86,9 +85,11 @@
 
 <button type="button"
     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-    Choose plan
+    Add Book
     <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M1 5h12m0 0L9 1m4 4L9 9" />
     </svg>
 </button>
+
+<script src="/js/library.js"></script>
