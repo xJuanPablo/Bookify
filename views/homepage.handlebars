@@ -36,6 +36,100 @@
             </div>
         </div>
     </div>
+    <div class="py-6" id="pie-chart"></div>
+
+  <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+    <div class="flex justify-between items-center pt-5">
+      <!-- Button -->
+      <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
+            </li>
+          </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+  // ApexCharts options and config
+  window.addEventListener("load", function() {
+    const getChartOptions = () => {
+        return {
+          series: {[52.8, 26.8, 20.4]},
+          colors: ["#1C64F2", "#16BDCA", "#9061F9"],
+          chart: {
+            height: 420,
+            width: "100%",
+            type: "pie",
+          },
+          stroke: {
+            colors: ["white"],
+            lineCap: "",
+          },
+          plotOptions: {
+            pie: {
+              labels: {
+                show: true,
+              },
+              size: "100%",
+              dataLabels: {
+                offset: -25
+              }
+            },
+          },
+          labels: ["Direct", "Organic search", "Referrals"],
+          dataLabels: {
+            enabled: true,
+            style: {
+              fontFamily: "Inter, sans-serif",
+            },
+          },
+          legend: {
+            position: "bottom",
+            fontFamily: "Inter, sans-serif",
+          },
+          yaxis: {
+            labels: {
+              formatter: function (value) {
+                return value + "%"
+              },
+            },
+          },
+          xaxis: {
+            labels: {
+              formatter: function (value) {
+                return value  + "%"
+              },
+            },
+            axisTicks: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+          },
+        }
+      }
+
+      if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
+        chart.render();
+      }
+  });
+</script>
     <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
                     <div class="flex justify-between items-start w-full">
                         <div class="flex-col items-center">
