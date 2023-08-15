@@ -60,7 +60,7 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
   res.render('dashboard', { username, loggedIn, firstName })
 })
 
-router.get('/profile/:username/library', async (req, res)=>{
+router.get('/profile/:username/library', withAuth, async (req, res)=>{
   const loggedIn = req.session.loggedIn;
   const user = req.session.user;
   const username = user.username;
@@ -83,7 +83,7 @@ router.get('/profile/:username/library', async (req, res)=>{
   }
 });
 
-router.get('/analytics', async (req, res)=>{
+router.get('/analytics', withAuth, async (req, res)=>{
   const loggedIn = req.session.loggedIn;
   const user = req.session.user;
   const username = user.username;
@@ -106,7 +106,7 @@ router.get('/analytics', async (req, res)=>{
   res.render('analytics', { username, loggedIn, firstName, genreData })
 });
 
-router.get('/profile/:username/test', async (req, res)=>{
+router.get('/profile/:username/test', withAuth, async (req, res)=>{
   const loggedIn = req.session.loggedIn;
   const user = req.session.user;
   const username = user.username;
