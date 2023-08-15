@@ -20,6 +20,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const dbUserData = await Users.findAll();
+    res.status(200).json(dbUserData)
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
 // Login
 router.post('/login', async (req, res) => {
   try {
@@ -69,5 +79,15 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+// get all
+router.get('/', async (req, res) => {
+  try {
+    const dbUserData = await Users.findAll();
+    res.status(200).json(dbUserData)
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;

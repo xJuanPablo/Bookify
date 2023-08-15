@@ -30,15 +30,14 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/profile/:username', withAuth, async (req,res)=>{
-  const loggedIn = req.session.loggedIn;
+  try {const loggedIn = req.session.loggedIn;
   const findProfile = await Users.findOne({
     where: { username: req.params.username }
   });
   if(!findProfile) {
-    res.status(404);
-    res.render('404');
+    res.status(404).render('404');
     return;
-  }
+  } 
   const user = findProfile;
   const username = user.username;
   const id = user.id
@@ -58,9 +57,10 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
   // const books = test.map((bookname) => bookname.get({ plain: true }));
   // res.status(200).json(test)
   res.render('dashboard', { username, loggedIn, firstName })
+} catch(err) {res.json(err)}
 })
 
-router.get('/profile/:username/library', async (req, res)=>{
+router.get('/profile/:username/library', withAuth, async (req, res)=>{
   const loggedIn = req.session.loggedIn;
   const user = req.session.user;
   const username = user.username;
@@ -83,7 +83,7 @@ router.get('/profile/:username/library', async (req, res)=>{
   }
 });
 
-router.get('/analytics', async (req, res)=>{
+router.get('/analytics', withAuth, async (req, res)=>{
   const loggedIn = req.session.loggedIn;
   const user = req.session.user;
   const username = user.username;
@@ -106,7 +106,7 @@ router.get('/analytics', async (req, res)=>{
   res.render('analytics', { username, loggedIn, firstName, genreData })
 });
 
-router.get('/profile/:username/test', async (req, res)=>{
+router.get('/profile/:username/test', withAuth, async (req, res)=>{
   const loggedIn = req.session.loggedIn;
   const user = req.session.user;
   const username = user.username;
