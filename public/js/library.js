@@ -1,87 +1,87 @@
-const currentlyReadingList = document.getElementById('currently-list'); 
-const futureReadingList = document.getElementById('book-list'); 
-const completedReadingList = document.getElementById('compelted-list'); 
+// const currentlyReadingList = document.getElementById('currently-list'); 
+// const futureReadingList = document.getElementById('book-list'); 
+// const completedReadingList = document.getElementById('compelted-list'); 
 
-currentlyReadingList.addEventListener('click', async (event) => {
-    event.preventDefault;
-    const deleteButton = event.target.closest('.deleteMe');
+// currentlyReadingList.addEventListener('click', async (event) => {
+//     event.preventDefault;
+//     const deleteButton = event.target.closest('.deleteMe');
   
-    if (deleteButton) {
-      const entryId = deleteButton.parentElement.dataset.entryId;
+//     if (deleteButton) {
+//       const entryId = deleteButton.parentElement.dataset.entryId;
       
-        try {
-            const response = await fetch(`/api/library/${entryId}`, {
-            method: 'DELETE',
-            credentials: 'include'
-            });
+//         try {
+//             const response = await fetch(`/api/library/${entryId}`, {
+//             method: 'DELETE',
+//             credentials: 'include'
+//             });
 
-            if (response.ok) {
-                console.log('Entry deleted successfully');
-                document.location.reload();
-            } else {
-                const errorMessage = await response.json();
-                console.error(errorMessage.message);
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
-    }
-});
+//             if (response.ok) {
+//                 console.log('Entry deleted successfully');
+//                 document.location.reload();
+//             } else {
+//                 const errorMessage = await response.json();
+//                 console.error(errorMessage.message);
+//             }
+//         } catch (error) {
+//             console.error('An error occurred:', error);
+//         }
+//     }
+// });
 
-futureReadingList.addEventListener('click', async (event) => {
-    event.preventDefault;
-    const deleteButton = event.target.closest('.deleteMe');
+// futureReadingList.addEventListener('click', async (event) => {
+//     event.preventDefault;
+//     const deleteButton = event.target.closest('.deleteMe');
   
-    if (deleteButton) {
-      const entryId = deleteButton.parentElement.dataset.entryId;
+//     if (deleteButton) {
+//       const entryId = deleteButton.parentElement.dataset.entryId;
       
-        try {
-            const response = await fetch(`/api/library/${entryId}`, {
-            method: 'DELETE',
-            credentials: 'include'
-            });
+//         try {
+//             const response = await fetch(`/api/library/${entryId}`, {
+//             method: 'DELETE',
+//             credentials: 'include'
+//             });
 
-            if (response.ok) {
-                console.log('Entry deleted successfully');
-                document.location.reload();
-            } else {
-                const errorMessage = await response.json();
-                console.error(errorMessage.message);
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
-    }
-});
+//             if (response.ok) {
+//                 console.log('Entry deleted successfully');
+//                 document.location.reload();
+//             } else {
+//                 const errorMessage = await response.json();
+//                 console.error(errorMessage.message);
+//             }
+//         } catch (error) {
+//             console.error('An error occurred:', error);
+//         }
+//     }
+// });
 
-completedReadingList.addEventListener('click', async (event) => {
-    event.preventDefault;
-    const deleteButton = event.target.closest('.deleteMe');
+// completedReadingList.addEventListener('click', async (event) => {
+//     event.preventDefault;
+//     const deleteButton = event.target.closest('.deleteMe');
   
-    if (deleteButton) {
-      const entryId = deleteButton.parentElement.dataset.entryId;
+//     if (deleteButton) {
+//       const entryId = deleteButton.parentElement.dataset.entryId;
       
-        try {
-            const response = await fetch(`/api/library/${entryId}`, {
-            method: 'DELETE',
-            credentials: 'include'
-            });
+//         try {
+//             const response = await fetch(`/api/library/${entryId}`, {
+//             method: 'DELETE',
+//             credentials: 'include'
+//             });
 
-            if (response.ok) {
-                console.log('Entry deleted successfully');
-                document.location.reload();
-            } else {
-                const errorMessage = await response.json();
-                console.error(errorMessage.message);
-            }
-        } catch (error) {
-            console.error('An error occurred:', error);
-        }
-    }
-});
+//             if (response.ok) {
+//                 console.log('Entry deleted successfully');
+//                 document.location.reload();
+//             } else {
+//                 const errorMessage = await response.json();
+//                 console.error(errorMessage.message);
+//             }
+//         } catch (error) {
+//             console.error('An error occurred:', error);
+//         }
+//     }
+// });
 
 // ++++++++++++++++++++++++++++++++====================================+++++++++++++++++++++++++++++++++++
-
+const userModule = require('/js/user'); 
 const key = 'AIzaSyANF_jZMUut5yIGAX8NmtEjkqD0LWcgAhU'
 let searchBar = document.querySelector('#SearchBar');
 let searchButton = document.querySelector('#searchButton');
@@ -115,14 +115,13 @@ const renderCheckBox = () => {
 
 
 //This searches the google API and returns the data, putting it into an object.
-const bookAPI = (formattedSearch) => {
-  return fetch(`https://www.googleapis.com/books/v1/volumes?q=${formattedSearch}&key=${key}`, {
+const bookAPI = async (formattedSearch) => {
+  const userId = userModule.getUserId()
+  return await fetch(`https://www.googleapis.com/books/v1/volumes?q=${formattedSearch}&key=${key}`, {
     method: 'GET'
   })
   .then((response) => response.json())
   .then((data) => {
-    // const user = sessionStorage.getItem('user')
-    const user_id = 1
     const bookName = data.items[0].volumeInfo.title;
     const author = data.items[0].volumeInfo.authors[0];
     const isbn = data.items[0].volumeInfo.industryIdentifiers[0].identifier;
@@ -131,7 +130,7 @@ const bookAPI = (formattedSearch) => {
     const img = data.items[0].volumeInfo.imageLinks.thumbnail;
     
     bookData = {
-        user_id: user_id,
+        user_id: userId,
         book_name: bookName,
         author: author,
         isbn: isbn,
@@ -188,7 +187,7 @@ async function addBookToLibrary(bookData) {
 
         if (response.ok) {
             console.log('Book added successfully');
-            document.location.reload();
+            // document.location.reload();
         } else {
             const errorMessage = await response.json();
             console.error(errorMessage.message);
@@ -223,7 +222,7 @@ async function addBookToLibrary(bookData) {
 searchButton.addEventListener('click', () => {
   // Takes the search result and formats it
   searchFormat(searchBar.value)
-  //promise taking the formatted result and put's it in the function to search through google's api
+  //promise taking the formatted result and put's it in the function to search through google's a
     .then(formattedSearch => bookAPI(formattedSearch))
     .then(({ img, bookData: fetchedBookData }) => {
       console.log('Book:', fetchedBookData);
