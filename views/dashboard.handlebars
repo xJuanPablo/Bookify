@@ -3,156 +3,172 @@
   <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-        Welcome back {{username}}! 
+        Welcome {{username}}! 
       </h2>
+      <br>
+      <br>
+      <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
+        <a href="/profile/{{username}}/library" class="text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">My Library</a>
+      </p>
     </div>
 
     <div class="grid grid-cols-1 mt-12 text-center sm:mt-16 gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
       <div class="space-y-4">
         <span
           class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-          Your pages read this past week
+          Pages read this past week
         </span>
-        {{!-- <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
-          Nothing here yet...
-        </h3> --}}
-        {{!--  --}}
         <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+        {{#if noEntries}}
+        <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+          Nothing here yet...
+        </h3>
+        {{/if}}
+        {{#if yesEntries}}
           <div id="column-chart"></div>
           <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
           </div>
+
+          <script>
+            // ApexCharts options and config
+            window.addEventListener("load", function() {
+              const series = {{{series}}}
+              const labels = {{{labels}}}
+              const options = {
+                    colors: ["#1A56DB"],
+                    series: [
+                      {
+                        name: "Pages Read",
+                        color: "#1A56DB",
+                        data: labels.map((label, index) => ({ x: label, y: series[index] })),
+                      },
+                    ],
+                    chart: {
+                      type: "bar",
+                      height: "320px",
+                      fontFamily: "Inter, sans-serif",
+                      toolbar: {
+                        show: false,
+                      },
+                    },
+                    plotOptions: {
+                      bar: {
+                        horizontal: false,
+                        columnWidth: "70%",
+                        borderRadiusApplication: "end",
+                        borderRadius: 8,
+                      },
+                    },
+                    tooltip: {
+                      shared: true,
+                      intersect: false,
+                      style: {
+                        fontFamily: "Inter, sans-serif",
+                      },
+                    },
+                    states: {
+                      hover: {
+                        filter: {
+                          type: "darken",
+                          value: 1,
+                        },
+                      },
+                    },
+                    stroke: {
+                      show: true,
+                      width: 0,
+                      colors: ["transparent"],
+                    },
+                    grid: {
+                      show: false,
+                      strokeDashArray: 4,
+                      padding: {
+                        left: 2,
+                        right: 2,
+                        top: -14
+                      },
+                    },
+                    dataLabels: {
+                      enabled: false,
+                    },
+                    legend: {
+                      show: false,
+                    },
+                    xaxis: {
+                      floating: false,
+                      labels: {
+                        show: true,
+                        style: {
+                          fontFamily: "Inter, sans-serif",
+                          cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                        }
+                      },
+                      axisBorder: {
+                        show: false,
+                      },
+                      axisTicks: {
+                        show: false,
+                      },
+                    },
+                    yaxis: {
+                      show: false,
+                    },
+                    fill: {
+                      opacity: 1,
+                    },
+                  }
+
+                  if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
+                    const chart = new ApexCharts(document.getElementById("column-chart"), options);
+                    chart.render();
+                  }
+            });
+          </script>
+          {{/if}}
         </div>
-
-<script>
-  // ApexCharts options and config
-  window.addEventListener("load", function() {
-    const series = {{{series}}}
-    console.log(series)
-    const labels = {{{labels}}}
-    console.log(labels)
-    const options = {
-          colors: ["#1A56DB"],
-          series: [
-            {
-              name: "Pages Read",
-              color: "#1A56DB",
-              data: labels.map((label, index) => ({ x: label, y: series[index] })),
-            },
-          ],
-          chart: {
-            type: "bar",
-            height: "320px",
-            fontFamily: "Inter, sans-serif",
-            toolbar: {
-              show: false,
-            },
-          },
-          plotOptions: {
-            bar: {
-              horizontal: false,
-              columnWidth: "70%",
-              borderRadiusApplication: "end",
-              borderRadius: 8,
-            },
-          },
-          tooltip: {
-            shared: true,
-            intersect: false,
-            style: {
-              fontFamily: "Inter, sans-serif",
-            },
-          },
-          states: {
-            hover: {
-              filter: {
-                type: "darken",
-                value: 1,
-              },
-            },
-          },
-          stroke: {
-            show: true,
-            width: 0,
-            colors: ["transparent"],
-          },
-          grid: {
-            show: false,
-            strokeDashArray: 4,
-            padding: {
-              left: 2,
-              right: 2,
-              top: -14
-            },
-          },
-          dataLabels: {
-            enabled: false,
-          },
-          legend: {
-            show: false,
-          },
-          xaxis: {
-            floating: false,
-            labels: {
-              show: true,
-              style: {
-                fontFamily: "Inter, sans-serif",
-                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-              }
-            },
-            axisBorder: {
-              show: false,
-            },
-            axisTicks: {
-              show: false,
-            },
-          },
-          yaxis: {
-            show: false,
-          },
-          fill: {
-            opacity: 1,
-          },
-        }
-
-        if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
-          const chart = new ApexCharts(document.getElementById("column-chart"), options);
-          chart.render();
-        }
-  });
-</script>
         {{!--  --}}
         <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
-          Add some info
+          <button id="openModalBtn1" class="open-modal-btn text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">New Reading Entry</button>
+
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <span id="closeModal1" class="close">&times;</span>
+              <br>
+              <h2>Enter Pages Read Today</h2>
+              <input type="number" id="pagesReadInput" class="yearly-goal-input" placeholder="Enter pages read">
+              <button id="submitBtn1" class="submit-btn">Submit</button>
+            </div>
+          </div>
         </p>
+
       </div>
 
       <div class="space-y-4">
         <span
           class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-          Your favorite genres
+          My favorite genres
         </span>
+        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
         {{#if noBooks}}
         <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
           Nothing here yet...
         </h3>
         {{/if}}
         {{#if yesBooks}}
-        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
           <!-- Line Chart -->
           <div class="py-6" id="pie-chart"></div>
 
           <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
             </div>
-          </div>
         
 
 
         <script>
           const genreData = {{{genreData}}};
           const genreArray = genreData.map(entry => entry.genre);
-          console.log(genreArray)
           const percentageArray = genreData.map(entry => entry.percentage);
-          console.log(percentageArray)
+          const test = {{{completedReading}}}
+          console.log(test)
           // ApexCharts options and config
           window.addEventListener("load", function() {
             const getChartOptions = () => {
@@ -220,26 +236,57 @@
           });
         </script>
         {{/if}}
+        </div>
         <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
-          <a href="/profile/{{username}}/library">Add some info</a>
+          <a href="/profile/{{username}}/library" class="text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add books to your library!</a>
         </p>
       </div>
-
       <div class="space-y-4">
-        <span
-          class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-          Total books read
-        </span>
-        <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
-          Nothing here yet...
-        </h3>
+          <span
+            class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+            My goal and total books read
+          </span>
+        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+          {{#if noGoal}}
+          <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+            Nothing here yet...
+          </h3>
+          {{/if}}
+          {{#if yesGoal}}
+          <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
+          Awesome job so far! Your yearly total is up to {{{completedReading}}}! Keep up the great work!
+          </p>
+          <br>
+          <br>
+          <div class="w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700 flex items-center">
+            <div class="bg-blue-600 h-6 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full w-1/2"style="width: {{goalPercentage}}%">
+              <div class="flex items-center justify-center h-full 65%">{{goalPercentage}}%</div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
+            Your yearly goal: {{{yearlyGoal}}}
+          </p>
+        {{/if}}
+        </div>
         <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
-          Add some info
+          <button id="openModalBtn" class="open-modal-btn text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enter a new goal!</button>
+
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span id="closeModal" class="close">&times;</span>
+              <br>
+              <h2>Enter Your Yearly Goal</h2>
+              <input type="text" id="yearlyGoalInput" class="yearly-goal-input" placeholder="Enter your goal">
+              <button id="submitBtn" class="submit-btn">Submit</button>
+            </div>
+          </div>
         </p>
-      </div>
+        </div>
     </div>
   </div>
-  <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+  {{!-- <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
     <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Button</button>
       <p class="text-sm font-light text-gray-500 dark:text-gray-400">
        Need some inspiration? Find out what others are reading here
@@ -254,6 +301,7 @@
         </li>
         <li>
             <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
-        </li>
+        </li> --}}
 </section>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/js/yearlyGoalModal.js"></script>

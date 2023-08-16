@@ -92,4 +92,22 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.put('/yearlyGoal', async (req, res) => {
+  try{
+    const userData = await Users.update(
+      {
+        yearly_goal: req.body.userGoal
+      },
+      {
+        where: {
+          id: req.session.user_id
+        }
+      });
+      return res.status(200).json({ body: userData, message: 'Yearly goal updated successfully.' });
+  } catch (err){
+    console.error(err);
+    return res.status(500).json({ message: 'Server error.' });
+  }
+})
+
 module.exports = router;
