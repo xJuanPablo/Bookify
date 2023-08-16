@@ -1,7 +1,7 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 <div class="flex items-center justify-center rounded-md mb-5 mt-5">
-    <h1 class="text-2xl italic">My Library</h1>
+    <h1 class="text-2xl italic" style="font-family: 'Kanit', sans-serif;">My Library</h1>
 </div>
 {{#if noBooks}}
 <h1
@@ -9,9 +9,9 @@
     You dont have any books! Add some to see them here...</h1>
 {{/if}}
 {{#if allBooks}}
-<div class="container mx-auto h-3/4 bg-[url('/DICKS.png')] bg-cover mb-2">
-    <div class="w-full inline-flex flex-nowrap">
-        <p class="items-center flex font-semibold text-1xl pl-5">Currently Reading:</p>
+<div class="container mx-auto h-3/4 mb-2">
+    <div class="w-full inline-flex flex-nowrap h-full bg-[url('/assets/POGSS.png')] bg-cover">
+        <p class="items-center flex font-semibold text-1xl pl-5" style="font-family: 'Poppins', sans-serif;  height: 200px;">Currently Reading:</p>
         <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="currently-list">
             {{#each currentlyReading as |book| }}
@@ -29,18 +29,18 @@
                             <!-- ... -->
                             <span id="closeModal" class="close">&times;</span>
                             <br>
-                            <div class="flex justify-center mb-4">
+                            <div class="flex justify-center mb-4 ml-10">
                                 <img src="" id="bookImg-{{book.id}}" class="max-w-full h-auto"></img>
                             </div>
-                            <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}"></h2>
-                            <p class="mb-2"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
+                            <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}" style="font-family: 'Della Respira', serif;"></h2>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
                             <!-- ... -->
-                            <button id="deleteButton-{{book.id}}" class="btn-delete">Delete</button>
-                            <button id="futureButton-{{book.id}}" class="btn-future">Future Reading</button>
-                            <button id="completeButton-{{book.id}}" class="btn-complete">Finished Reading</button>
+                            <button id="deleteButton-{{book.id}}" class="btn-delete" style="font-family: 'Poppins', sans-serif;">Delete</button>
+                            <button id="futureButton-{{book.id}}" class="btn-future" style="font-family: 'Poppins', sans-serif;">Future Reading</button>
+                            <button id="completeButton-{{book.id}}" class="btn-complete" style="font-family: 'Poppins', sans-serif;">Finished Reading</button>
                             <!-- ... -->
                         </div>
                 </div>
@@ -48,8 +48,8 @@
             {{/each}}
         </ul>
     </div>
-    <div class="w-full inline-flex flex-nowrap">
-        <p class="items-center flex font-semibold text-1xl pl-5">Future Reading:</p>
+    <div class="w-full inline-flex flex-nowrap h-100% bg-[url('/assets/POGSS.png')] bg-cover">
+        <p class="items-center flex font-semibold text-1xl pl-5" style="font-family: 'Poppins', sans-serif;  height: 200px;">Future Reading:</p>
         <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="book-list">
             {{#each futureBooks as |book|}}
@@ -67,18 +67,18 @@
                             <!-- ... -->
                             <span id="closeModal" class="close">&times;</span>
                             <br>
-                            <div class="flex justify-center mb-4">
+                            <div class="flex justify-center mb-4 ml-10">
                                 <img src="" id="bookImg-{{book.id}}" class="max-w-full h-auto"></img>
                             </div>
-                            <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}"></h2>
-                            <p class="mb-2"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
+                            <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}" style="font-family: 'Della Respira', serif;"></h2>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
                             <!-- ... -->
-                            <button id="deleteButton-{{book.id}}" class="btn-delete">Delete</button>
-                            <button id="startButton-{{book.id}}" class="btn-start">Currently Reading</button>
-                            <button id="completeButton-{{book.id}}" class="btn-complete">Finished Reading</button>
+                            <button id="deleteButton-{{book.id}}" class="btn-delete" style="font-family: 'Poppins', sans-serif;">Delete</button>
+                            <button id="startButton-{{book.id}}" class="btn-start" style="font-family: 'Poppins', sans-serif;">Currently Reading</button>
+                            <button id="completeButton-{{book.id}}" class="btn-complete" style="font-family: 'Poppins', sans-serif;">Finished Reading</button>
                             <!-- ... -->
                         </div>
                 </div>
@@ -86,8 +86,8 @@
             {{/each}}
         </ul>
     </div>
-    <div class="w-full inline-flex flex-nowrap" id="has_read">
-        <p class="items-center flex font-semibold text-1xl pl-5">Finished Reading:</p>
+    <div class="w-full inline-flex flex-nowrap h-full bg-[url('/assets/POGSS.png')] bg-cover" id="has_read">
+        <p class="items-center flex font-semibold text-1xl pl-5" style="font-family: 'Della Respira', serif; height: 200px;">Finished Reading:</p>
         <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="compelted-list">
             {{#each completedReading as |book|}}
@@ -105,18 +105,18 @@
                             <!-- ... -->
                             <span id="closeModal" class="close">&times;</span>
                             <br>
-                            <div class="flex justify-center mb-4">
+                            <div class="flex justify-center mb-4 ml-10">
                                 <img src="" id="bookImg-{{book.id}}" class="max-w-full h-auto"></img>
                             </div>
                             <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}"></h2>
-                            <p class="mb-2"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
-                            <p class="mb-2"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
+                            <p class="mb-2" style="font-family: 'Poppins', sans-serif;"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
                             <!-- ... -->
-                            <button id="deleteButton-{{book.id}}" class="btn-delete">Delete</button>
-                            <button id="futureButton-{{book.id}}" class="btn-future">Future Reading</button>
-                            <button id="startButton-{{book.id}}" class="btn-start">Currently Reading</button>
+                            <button id="deleteButton-{{book.id}}" class="btn-delete" style="font-family: 'Poppins', sans-serif;">Delete</button>
+                            <button id="futureButton-{{book.id}}" class="btn-future" style="font-family: 'Poppins', sans-serif;">Future Reading</button>
+                            <button id="startButton-{{book.id}}" class="btn-start" style="font-family: 'Poppins', sans-serif;">Currently Reading</button>
                             <!-- ... -->
                         </div>
                 </div>
@@ -127,7 +127,7 @@
 </div>
 {{/if}}
 <div class="flex items-center justify-center rounded-md mb-5 mt-5">
-    <h1 class="text-2xl italic">Add a new book!</h1>
+    <h1 class="text-2xl italic" style="font-family: 'Kanit', sans-serif;">Add a new book!</h1>
 </div>
 <div class="flex items-center justify-center rounded-md">
 <input class=" rounded-md" type="text" placeholder="Search.." id="SearchBar">
