@@ -123,6 +123,7 @@ router.get('/profile/:username/library', withAuth, async (req, res)=>{
     })
   const libraryData = userData.libraries
   const allBooks = libraryData.map((book_name) => book_name.get({ plain: true }));
+  const futureBooks = libraryData.filter((book) => book.future_reading).map((book) => book.get({ plain: true }));
   const currentlyReading = libraryData.filter((book) => book.currently_reading).map((book) => book.get({ plain: true }));
   const completedReading = libraryData.filter((book) => book.completed).map((book) => book.get({ plain: true }));
   // res.json(books)
@@ -130,7 +131,7 @@ router.get('/profile/:username/library', withAuth, async (req, res)=>{
     const noBooks = true
     res.render('library', { username, loggedIn, firstName, noBooks})
   } else {
-    res.render('library', { username, loggedIn, firstName, allBooks, currentlyReading, completedReading})
+    res.render('library', { username, loggedIn, allBooks, firstName, futureBooks, currentlyReading, completedReading})
   }
 });
 

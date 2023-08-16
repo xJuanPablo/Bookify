@@ -35,6 +35,11 @@ Library.init(
             allowNull: true,
             defaultValue: false
         },
+        future_reading: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false,
+        },
         genre: {
             type: DataTypes.STRING,
             allowNull: false
