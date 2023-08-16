@@ -13,10 +13,12 @@
           class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
           Your pages read this past week
         </span>
-        {{!-- <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+        {{#if noEntries}}
+        <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
           Nothing here yet...
-        </h3> --}}
-        {{!--  --}}
+        </h3>
+        {{/if}}
+        {{#if yesEntries}}
         <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
           <div id="column-chart"></div>
           <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
@@ -27,9 +29,7 @@
   // ApexCharts options and config
   window.addEventListener("load", function() {
     const series = {{{series}}}
-    console.log(series)
     const labels = {{{labels}}}
-    console.log(labels)
     const options = {
           colors: ["#1A56DB"],
           series: [
@@ -120,6 +120,7 @@
         }
   });
 </script>
+{{/if}}
         {{!--  --}}
         <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
           Add some info
@@ -150,9 +151,7 @@
         <script>
           const genreData = {{{genreData}}};
           const genreArray = genreData.map(entry => entry.genre);
-          console.log(genreArray)
           const percentageArray = genreData.map(entry => entry.percentage);
-          console.log(percentageArray)
           // ApexCharts options and config
           window.addEventListener("load", function() {
             const getChartOptions = () => {
