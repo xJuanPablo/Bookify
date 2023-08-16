@@ -1,0 +1,16 @@
+.book-button {
+  display: block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.clickable-book-cover {
+  display: block;
+  max-width: 100px; 
+  height: auto;
+  cursor: pointer;
+}
