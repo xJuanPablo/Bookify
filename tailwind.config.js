@@ -11,7 +11,7 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'dicks': "url('assets/DICKS.png')",
+        'dicks': "url('/assets/DICKS.png')",
       },
     },
   },
@@ -20,5 +20,5 @@ module.exports = {
         charts: true,
     }),
   ]
-}
+};
 
