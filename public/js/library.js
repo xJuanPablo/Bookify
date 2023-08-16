@@ -129,12 +129,15 @@ searchButton.addEventListener('click', () => {
 });
 
 function clearSearchResult() {
-  const bookContainer = document.getElementById('bookContainer');
+  const confirmButtonContainer = document.getElementById('confirmButtonContainer');
   renderImage('', { book_name: '', author: '' });
+  const renderImg = document.getElementById('renderImg')
   const radioInputs = document.querySelectorAll('input[name="choice"]');
   radioInputs.forEach(input => input.checked = false);
   const checkmarkContainer = document.getElementById('checkmarkContainer');
+  renderImg.style.display = 'none';
   checkmarkContainer.style.display = 'none';
+  confirmButtonContainer.style.display = 'none';
 }
 
 

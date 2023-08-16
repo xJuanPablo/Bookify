@@ -33,8 +33,8 @@
                     class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-stone-800 dark:text-stone-800 rounded-lg border border-stone-300 hover:bg-stone-100 focus:ring-4 focus:ring-stone-100 dark:border-stone-700 dark:hover:bg-stone-700 dark:hover:text-gray-50 dark:focus:ring-stone-800">
                     Sign In
                 </a>
-                <a href="#"
-                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                <a href="#column-chart"
+                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900" >
                     Learn More!
                     <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 10">
@@ -47,7 +47,266 @@
         </div>
     </div>
 </section>
-<section class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 bg-gray-50">
+
+<section>
+    <div class="flex justify-center">
+        <div class="grid grid-cols-2 gap-4 m-10">
+            <!-- Loop through your data and generate each row -->
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="mb-2 text-center justify-center">
+                    <!-- Render your chart here -->
+                    <span class="bg-gray-100 text-stone-900 text-md inline-flex items-center text-center justify-center flex px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300">
+                    Your top genres
+                    </span>
+                    <div class="py-6" id="pie-chart"></div>
+
+                    <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+                    </div>
+                    
+                    <script>
+                    // ApexCharts options and config
+                    window.addEventListener("load", function() {
+                        const getChartOptions = () => {
+                            return {
+                            series: [15, 22, 13, 33, 17],
+                            colors: ["#1C64F2", "#16BDCA", "#9061F9", "#2G432D"],
+                            chart: {
+                                height: 420,
+                                width: "100%",
+                                type: "pie",
+                            },
+                            stroke: {
+                                colors: ["white"],
+                                lineCap: "",
+                            },
+                            plotOptions: {
+                                pie: {
+                                labels: {
+                                    show: true,
+                                },
+                                size: "100%",
+                                dataLabels: {
+                                    offset: -25
+                                }
+                                },
+                            },
+                            labels: ["Romance", "Non-Fiction", "Fiction", "History", "Biography"],
+                            dataLabels: {
+                                enabled: true,
+                                style: {
+                                fontFamily: "Inter, sans-serif",
+                                },
+                            },
+                            legend: {
+                                position: "bottom",
+                                fontFamily: "Inter, sans-serif",
+                            },
+                            yaxis: {
+                                labels: {
+                                formatter: function (value) {
+                                    return value + "%"
+                                },
+                                },
+                            },
+                            xaxis: {
+                                labels: {
+                                formatter: function (value) {
+                                    return value  + "%"
+                                },
+                                },
+                                axisTicks: {
+                                show: false,
+                                },
+                                axisBorder: {
+                                show: false,
+                                },
+                            },
+                            }
+                        }
+
+                        if (document.getElementById("pie-chart") && typeof ApexCharts !== 'undefined') {
+                            const chart = new ApexCharts(document.getElementById("pie-chart"), getChartOptions());
+                            chart.render();
+                        }
+                    });
+                    </script>
+                </div>
+
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md text-center justify-center items-center">
+                <div class="text-center justify-center" style="height: 100%">
+                    <p class="flex text-center" style="align-items: center; height: 100%;">Welcome to Bookify, where we bring the power of data insights to your reading experience. Our innovative platform offers a captivating glimpse into your reading preferences through a visually engaging demonstration. The centerpiece of this experience is our interactive pie chart, meticulously designed to reflect your unique literary tastes. By analyzing the contents of your personal library, our advanced algorithms distill the genres that resonate most with you. This elegant representation not only showcases the diversity of your literary interests but also serves as a window into the rich tapestry of your reading journey. Whether you're a fervent mystery enthusiast, a connoisseur of historical fiction, or an explorer of science fiction realms, Bookify is your portal to discovering the literary facets that define you.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="text-center justify-center" style="height: 100%">
+                    <p class="flex text-center" style="align-items: center; height: 100%;">Embark on a visual journey through the pages of your reading life. Our commitment to enhancing your reading experience takes center stage with our insightful bar graph display. This meticulously crafted graph tracks your reading engagement across the days of the week, presenting a clear and comprehensive breakdown of your literary adventures. Each bar is a testament to your dedication, illustrating the number of pages devoured on a specific day. Whether your week kicks off with a leisurely Sunday afternoon immersed in a captivating novel or features a productive mid-week surge, our dynamic bar graph encapsulates the ebb and flow of your reading rhythm. By capturing these nuances, we empower you to understand and appreciate the patterns that shape your reading habits. Dive into the details, track your progress, and uncover the fascinating narrative woven by the pages turned from Monday to Sunday.</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="mb-2 text-center justify-center">
+                    <!-- Render your chart here -->
+                    <span class="bg-gray-100 text-stone-900 text-md inline-flex items-center text-center justify-center flex px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300">
+                    Pages read this past week
+                    </span>
+                    <div id="column-chart"></div>
+                    <div class="grid grid-cols-1 items-center border-gray-200 border-t  dark:border-gray-700 justify-between">
+                    </div>
+
+                    <script>
+                        // ApexCharts options and config
+                        window.addEventListener("load", function() {
+                        const options = {
+                                colors: ["#1A56DB"],
+                                series: [
+                                {
+                                    name: "Pages Read",
+                                    color: "#1A56DB",
+                                    data: [
+                                        { x: "Mon", y: 15 },
+                                        { x: "Tue", y: 43},
+                                        { x: "Wed", y: 63 },
+                                        { x: "Thu", y: 32 },
+                                        { x: "Fri", y: 25 },
+                                        { x: "Sat", y: 96 },
+                                        { x: "Sun", y: 57 },
+                                    ],
+                                },
+                                ],
+                                chart: {
+                                type: "bar",
+                                height: "320px",
+                                fontFamily: "Inter, sans-serif",
+                                toolbar: {
+                                    show: false,
+                                },
+                                },
+                                plotOptions: {
+                                bar: {
+                                    horizontal: false,
+                                    columnWidth: "70%",
+                                    borderRadiusApplication: "end",
+                                    borderRadius: 8,
+                                },
+                                },
+                                tooltip: {
+                                shared: true,
+                                intersect: false,
+                                style: {
+                                    fontFamily: "Inter, sans-serif",
+                                },
+                                },
+                                states: {
+                                hover: {
+                                    filter: {
+                                    type: "darken",
+                                    value: 1,
+                                    },
+                                },
+                                },
+                                stroke: {
+                                show: true,
+                                width: 0,
+                                colors: ["transparent"],
+                                },
+                                grid: {
+                                show: false,
+                                strokeDashArray: 4,
+                                padding: {
+                                    left: 2,
+                                    right: 2,
+                                    top: -14
+                                },
+                                },
+                                dataLabels: {
+                                enabled: false,
+                                },
+                                legend: {
+                                show: false,
+                                },
+                                xaxis: {
+                                floating: false,
+                                labels: {
+                                    show: true,
+                                    style: {
+                                    fontFamily: "Inter, sans-serif",
+                                    cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                                    }
+                                },
+                                axisBorder: {
+                                    show: false,
+                                },
+                                axisTicks: {
+                                    show: false,
+                                },
+                                },
+                                yaxis: {
+                                show: false,
+                                },
+                                fill: {
+                                opacity: 1,
+                                },
+                            }
+
+                            if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
+                                const chart = new ApexCharts(document.getElementById("column-chart"), options);
+                                chart.render();
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="mb-2 text-center justify-center">
+                    <!-- Render your chart here -->
+                    <span class="bg-gray-100 text-stone-900 text-md inline-flex items-center text-center justify-center flex px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300 mb-5">
+                    User Reviews
+                    </span>
+                    <p class="italic">This app literally changed my life! ~Arnold Schwarzenegger</p>
+                    <br>
+                    <p class="italic">This is the only way I could keep track of my busy life while I was president! ~Barack Obama</p>
+                    <br>
+                    <p class="italic">With the Bookify™ website I've seen my reading comprehension skyrocket! ~John Cena</p>
+                    <br>
+                    <p class="italic">I've done a lot, but not as much as Bookify does ~Kevin Hart</p>
+
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="text-center justify-center pt-10 pb-10" style="height: 100%">
+                    <p class="flex text-center" style="align-items: center; height: 100%;">Discover what fellow readers are saying about their experience with Bookify! Our user reviews are a treasure trove of authentic insights that highlight the impact of our platform on diverse reading journeys. Immerse yourself in a tapestry of perspectives, each review weaving a unique story of how Bookify has transformed the way readers engage with their literary passions. From avid bookworms to casual readers, our community shares their thoughts on how our innovative features have enriched their reading habits, offering a personalized touch to their literary explorations. Dive into a sea of firsthand accounts, testimonials that underscore the transformative potential of tracking reading habits. These reviews not only showcase the power of data-driven insights but also affirm our mission to empower readers on their quest for knowledge and entertainment.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="text-center justify-center pt-10 pb-10" style="height: 100%">
+                    <p class="flex text-center" style="align-items: center; height: 100%;">We believe in turning aspirations into accomplishments. Introducing our innovative progress bar, a visual representation of your literary ambition. Set your annual reading goal and watch as the bar fills up, tracking your journey towards literary mastery. Whether your target is to devour a certain number of books or to dive into a specific genre, our progress bar keeps you informed about your stride toward success. As the bar inches closer to completion, you'll experience the satisfaction of achieving milestones and conquering your reading objectives. This dynamic feature not only fosters a sense of achievement but also motivates you to explore new horizons and embrace diverse narratives. Embodying the spirit of progress, our goal-oriented progress bar transforms your reading goals into a captivating reality.</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="mb-2 text-center justify-center">
+                    <!-- Render your chart here -->
+                    <span class="bg-gray-100 text-stone-900 text-md inline-flex items-center text-center justify-center flex px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300 mb-10">
+                    Track your progress!
+                    </span>
+                    <br>
+                    <div class="w-full h-6 bg-gray-50 rounded-full dark:bg-stone-700 flex items-center mt-5">
+                        <div class="bg-blue-600 h-6 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full w-1/2"style="width: 75%">
+                        <div class="flex items-center justify-center h-full 65%">75%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+{{!-- <section class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 bg-gray-50">
     <div
         class=" max-w-2xl w-full bg-gray-50 rounded-sm shadow dark:bg-red-300 p-4 md:p-6 ml-1 my-1">
         <div class="flex justify-between mb-3">
@@ -146,6 +405,7 @@
 
     </div>
 
-</section>
+</section> --}}
+
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="/js/animations.js"></script>

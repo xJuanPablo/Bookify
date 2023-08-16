@@ -21,9 +21,9 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    const dbUserData = await Users.findAll();
+    const dbUserData = await Users.findByPk(req.params.id);
     res.status(200).json(dbUserData)
   } catch (err) {
     console.log(err);

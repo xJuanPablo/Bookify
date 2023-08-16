@@ -1,96 +1,134 @@
+
 <script src="https://cdn.tailwindcss.com"></script>
+<div class="flex items-center justify-center rounded-md mb-5 mt-5">
+    <h1 class="text-2xl italic">My Library</h1>
+</div>
 {{#if noBooks}}
 <h1
     class="bg-red-500 w-96 mx-auto text-center text-white my-5 font-sans font-semibold text-2xl rounded-lg transition ease-out-in delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-black duration-300">
-    YOU GOT SUPER NO BITCHES</h1>
+    You dont have any books! Add some to see them here...</h1>
 {{/if}}
 {{#if allBooks}}
 <div class="container mx-auto h-3/4 bg-[url('/DICKS.png')] bg-cover mb-2">
     <div class="w-full inline-flex flex-nowrap">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+        <p class="items-center flex font-semibold text-1xl pl-5">Currently Reading:</p>
+        <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="currently-list">
             {{#each currentlyReading as |book| }}
-            <li data-entry-id="{{book.id}}">
+            <li data-entry-id="{{book.id}}" class="book-item">
                 <div class="overflow-hidden justify-center relative">
                     <img class="justify-center relative"
                         src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
-                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
+                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold book-item">
                         {{book.book_name}}</div>
                 </div>
-                <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-                    Delete Book
-                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                </button>
+                <div id="bookModal-{{book.id}}" class="modal flex justify-center items-center">
+                        <div class="modal-content">
+                            <!-- ... -->
+                            <span id="closeModal" class="close">&times;</span>
+                            <br>
+                            <div class="flex justify-center mb-4">
+                                <img src="" id="bookImg-{{book.id}}" class="max-w-full h-auto"></img>
+                            </div>
+                            <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}"></h2>
+                            <p class="mb-2"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
+                            <!-- ... -->
+                            <button id="deleteButton-{{book.id}}" class="btn-delete">Delete</button>
+                            <button id="futureButton-{{book.id}}" class="btn-future">Future Reading</button>
+                            <button id="completeButton-{{book.id}}" class="btn-complete">Finished Reading</button>
+                            <!-- ... -->
+                        </div>
+                </div>
             </li>
             {{/each}}
         </ul>
     </div>
     <div class="w-full inline-flex flex-nowrap">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+        <p class="items-center flex font-semibold text-1xl pl-5">Future Reading:</p>
+        <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="book-list">
             {{#each futureBooks as |book|}}
-            <li data-entry-id="{{book.id}}">
+            <li data-entry-id="{{book.id}}" class="book-item">
                 <div class="overflow-hidden justify-center relative">
                     <img class="justify-center relative"
                         src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
-                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
+                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold book-item">
                         {{book.book_name}}</div>
                 </div>
-                <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-                    Delete Book
-                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                </button>
+                <div id="bookModal-{{book.id}}" class="modal flex justify-center items-center">
+                        <div class="modal-content">
+                            <!-- ... -->
+                            <span id="closeModal" class="close">&times;</span>
+                            <br>
+                            <div class="flex justify-center mb-4">
+                                <img src="" id="bookImg-{{book.id}}" class="max-w-full h-auto"></img>
+                            </div>
+                            <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}"></h2>
+                            <p class="mb-2"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
+                            <!-- ... -->
+                            <button id="deleteButton-{{book.id}}" class="btn-delete">Delete</button>
+                            <button id="startButton-{{book.id}}" class="btn-start">Currently Reading</button>
+                            <button id="completeButton-{{book.id}}" class="btn-complete">Finished Reading</button>
+                            <!-- ... -->
+                        </div>
+                </div>
             </li>
             {{/each}}
         </ul>
     </div>
     <div class="w-full inline-flex flex-nowrap" id="has_read">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+        <p class="items-center flex font-semibold text-1xl pl-5">Finished Reading:</p>
+        <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="compelted-list">
             {{#each completedReading as |book|}}
-            <li data-entry-id="{{book.id}}">
+            <li data-entry-id="{{book.id}}" class="book-item" >
                 <div class="overflow-hidden justify-center relative">
                     <img class="justify-center relative"
                         src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
-                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
+                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold book-item">
                         {{book.book_name}}</div>
                 </div>
-                <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 deleteMe">
-                    Delete Book
-                    <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                </button>
+                <div id="bookModal-{{book.id}}" class="modal flex justify-center items-center">
+                        <div class="modal-content">
+                            <!-- ... -->
+                            <span id="closeModal" class="close">&times;</span>
+                            <br>
+                            <div class="flex justify-center mb-4">
+                                <img src="" id="bookImg-{{book.id}}" class="max-w-full h-auto"></img>
+                            </div>
+                            <h2 class="text-lg font-semibold mb-4" id="bookName-{{book.id}}"></h2>
+                            <p class="mb-2"><strong>Author:</strong> <span id="bookAuthor-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>ISBN:</strong> <span id="bookISBN-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>Pages:</strong> <span id="bookPages-{{book.id}}"></span></p>
+                            <p class="mb-2"><strong>Genre:</strong> <span id="bookGenre-{{book.id}}"></span></p>
+                            <!-- ... -->
+                            <button id="deleteButton-{{book.id}}" class="btn-delete">Delete</button>
+                            <button id="futureButton-{{book.id}}" class="btn-future">Future Reading</button>
+                            <button id="startButton-{{book.id}}" class="btn-start">Currently Reading</button>
+                            <!-- ... -->
+                        </div>
+                </div>
             </li>
             {{/each}}
         </ul>
     </div>
 </div>
-<script src="/js/deleteBook.js"></script>
 {{/if}}
-
-
-<input type="text" placeholder="  Search..." id="SearchBar">
-
+<div class="flex items-center justify-center rounded-md mb-5 mt-5">
+    <h1 class="text-2xl italic">Add a new book!</h1>
+</div>
 <div class="flex items-center justify-center rounded-md">
 <input class=" rounded-md" type="text" placeholder="Search.." id="SearchBar">
 <button type="button"
@@ -106,15 +144,17 @@
 <div id="renderImg"></div>
 
 <div class="bg-gray-300 dark:bg-stone-400 flex items-center justify-center p-4 h-32 w-96 mx-auto rounded-b-md font-sans text-2xl" id="checkmarkContainer" style="display: none;">
-    <label>
+    <label class="text-sm">
         <input type="radio" name="choice" value="yes" id="currently">
         I'm currently reading this book!
     </label>
-    <label>
+    <br>
+    <label class="text-sm">
         <input type="radio" name="choice" value="yes" id="future">
         I want to read this in the future!
     </label>
-    <label>
+    <br>
+    <label class="text-sm">
         <input type="radio" name="choice" value="yes" id="completed">
         I've already read this book!
     </label>
@@ -145,7 +185,7 @@
 </div>
 
 
-<link rel="stylesheet" href="../public/styles/library.css">
+<link rel="stylesheet" href="/styles/library.css">
 
-
+<script src="/js/deleteBook.js"></script>
 <script src="/js/library.js"></script>
