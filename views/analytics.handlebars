@@ -11,13 +11,9 @@
 
 
 <script>
-  const test1 = [10, 20, 20, 20, 30]
-  const test2 = ["Fiction", "Non-Fiction", "Romance", "Biography", "Horror"]
   const genreData = {{{genreData}}};
   const genreArray = genreData.map(entry => entry.genre);
-  console.log(genreArray);
   const percentageArray = genreData.map(entry => entry.percentage);
-  console.log(percentageArray);
   // ApexCharts options and config
   window.addEventListener("load", function() {
     const getChartOptions = () => {

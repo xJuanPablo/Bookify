@@ -52,9 +52,62 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
     res.status(404).json({ message: 'User not found' });
     return;
   }
-  
+  const libraryData = userData.libraries
+  const totalBooks = libraryData.length;
+  const genres = {};
+  libraryData.forEach(book => {
+    if (genres.hasOwnProperty(book.genre)) {
+      genres[book.genre]++
+    } else {
+      genres[book.genre] = 1;
+    }
+  });
+  const genreData = Object.keys(genres).map(genre => {
+    const percentage = (genres[genre] / totalBooks) * 100;
+    return { genre, percentage };
+  });
 
-  res.render('dashboard', { username, loggedIn, firstName })
+  const today = new Date();
+  const pastWeekStartDate = new Date(today);
+  pastWeekStartDate.setDate(today.getDate() - 6);
+  
+  // Fetch data from the database
+  const pagesReadData = await Reading_Entry.findAll({
+    attributes: ['date', 'pages_read'],
+    where: {
+      user_id: id
+    },
+  });
+  
+  // Process the data to create labels and series
+  const labels = [];
+  const series = [];
+  
+  for (let i = 0; i < 7; i++) {
+    const currentDate = new Date(pastWeekStartDate);
+    currentDate.setDate(pastWeekStartDate.getDate() + i);
+  
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
+  
+    labels.push(formattedDate);
+  
+    const pagesReadEntry = pagesReadData.find(entry =>
+      entry.date.toISOString().split('T')[0] === currentDate.toISOString().split('T')[0]
+    );
+    series.push(pagesReadEntry ? pagesReadEntry.pages_read : 0);
+  }
+
+  if(totalBooks === 0) {
+    const noBooks = true;
+    res.render('dashboard', { username, loggedIn, firstName, noBooks, totalBooks })
+    return
+  }
+  const yesBooks = true;
+  res.render('dashboard', { username, loggedIn, firstName, yesBooks, pagesReadData: JSON.stringify(pagesReadData), genreData: JSON.stringify(genreData), labels: JSON.stringify(labels), series: JSON.stringify(series) })
 } catch(err) {res.json(err)}
 })
 
@@ -100,7 +153,6 @@ router.get('/analytics', withAuth, async (req, res)=>{
     const percentage = (genres[genre] / totalBooks) * 100;
     return { genre, percentage };
   });
-  // const allBooks = libraryData.map((books) => books.get({ plain: true }));
   res.render('analytics', { username, loggedIn, firstName, genreData: JSON.stringify(genreData) })
 });
 
