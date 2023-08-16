@@ -3,7 +3,6 @@ const { Library } = require('../../models')
 
 router.post('/', async (req,res) =>{
 try{
-  console.log('Incoming request body:', req.body);
   const libraryEntry = await Library.create({
     ...req.body,
     user_id: req.session.user_id
@@ -37,18 +36,5 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-// const insertBookToLibrary = (bookData) => {
-//   return Library.create({
-//     book_name: bookData.book_name,
-//     author: bookData.author,
-//     isbn: bookData.isbn,
-//     genre: bookData.genre,
-//     pages: bookData.pages,
-//     completed: false 
-//     //! Chris, please add any other properties you deem necessary.
-//   });
-// };
 
 module.exports = router;
