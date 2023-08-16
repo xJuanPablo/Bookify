@@ -100,14 +100,28 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
     );
     series.push(pagesReadEntry ? pagesReadEntry.pages_read : 0);
   }
-
+  if(pagesReadData.length === 0 && totalBooks === 0) {
+    const noBooks = true;
+    const noEntries = true;
+    res.render('dashboard', { username, loggedIn, firstName, noBooks, noEntries, totalBooks })
+    return
+  }
   if(totalBooks === 0) {
     const noBooks = true;
-    res.render('dashboard', { username, loggedIn, firstName, noBooks, totalBooks })
+    const yesEntries = true;
+    res.render('dashboard', { username, loggedIn, firstName, yesEntries, noBooks, totalBooks, labels: JSON.stringify(labels), series: JSON.stringify(series) })
+    return
+  }
+
+  if(pagesReadData.length === 0) {
+    const noEntries = true;
+    const yesBooks = true;
+    res.render('dashboard', { username, loggedIn, firstName, noEntries, yesBooks, genreData: JSON.stringify(genreData), totalBooks })
     return
   }
   const yesBooks = true;
-  res.render('dashboard', { username, loggedIn, firstName, yesBooks, pagesReadData: JSON.stringify(pagesReadData), genreData: JSON.stringify(genreData), labels: JSON.stringify(labels), series: JSON.stringify(series) })
+  const yesEntries = true;
+  res.render('dashboard', { username, loggedIn, firstName, yesEntries, yesBooks, genreData: JSON.stringify(genreData), labels: JSON.stringify(labels), series: JSON.stringify(series), totalBooks })
 } catch(err) {res.json(err)}
 })
 
