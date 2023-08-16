@@ -2,7 +2,7 @@
 <section class="bg-white dark:bg-stone-700 antialiased">
   <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
     <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+      <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl dark:text-white" style="font-family: 'Poppins', sans-serif;">
         Welcome {{username}}! 
       </h2>
       <br>
@@ -15,12 +15,12 @@
     <div class="grid grid-cols-1 mt-12 text-center sm:mt-16 gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
       <div class="space-y-4">
         <span
-          class="bg-gray-100 text-stone-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300">
+          class="bg-gray-100 text-stone-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300" style="font-family: 'Poppins', sans-serif;">
           Pages read this past week
         </span>
         <div class="max-w-sm w-full bg-green-200 rounded-lg shadow dark:bg-stone-800 p-4 md:p-6">
         {{#if noEntries}}
-        <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+        <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white" style="font-family: 'Poppins', sans-serif;">
           Nothing here yet...
         </h3>
         {{/if}}
@@ -128,14 +128,14 @@
         </div>
         {{!--  --}}
         <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
-          <button id="openModalBtn1" class="open-modal-btn text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">New Reading Entry</button>
+          <button id="openModalBtn1" class="open-modal-btn text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="font-family: 'Poppins', sans-serif;">New Reading Entry</button>
 
           <div id="modal1" class="modal">
             <div class="modal-content">
               <span id="closeModal1" class="close">&times;</span>
               <br>
-              <h2>Enter Pages Read Today</h2>
-              <input type="number" id="pagesReadInput" class="yearly-goal-input" placeholder="Enter pages read">
+              <h2 style="font-family: 'Poppins', sans-serif;">Enter Pages Read Today</h2>
+              <input type="number" id="pagesReadInput" class="yearly-goal-input" placeholder="Enter pages read" style="font-family: 'Poppins', sans-serif;">
               <button id="submitBtn1" class="submit-btn">Submit</button>
             </div>
           </div>
@@ -145,12 +145,12 @@
 
       <div class="space-y-4">
         <span
-          class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300">
+          class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300" style="font-family: 'Poppins', sans-serif;">
           My favorite genres
         </span>
         <div class="max-w-sm w-full bg-yellow-100 rounded-lg shadow dark:bg-stone-800 p-4 md:p-6">
         {{#if noBooks}}
-        <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+        <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white" style="font-family: 'Poppins', sans-serif;">
           Nothing here yet...
         </h3>
         {{/if}}
@@ -238,49 +238,49 @@
         {{/if}}
         </div>
         <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
-          <a href="/profile/{{username}}/library" class="text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add books to your library!</a>
+          <a href="/profile/{{username}}/library" class="text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="font-family: 'Poppins', sans-serif;">Add books to your library!</a>
         </p>
       </div>
       <div class="space-y-4">
           <span
-            class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300">
+            class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300" style="font-family: 'Poppins', sans-serif;">
             My goal and total books read
           </span>
         <div class="max-w-sm w-full h-3/4 bg-red-200 rounded-lg shadow dark:bg-stone-800 p-4 md:p-6">
           {{#if noGoal}}
-          <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
+          <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white" style="font-family: 'Poppins', sans-serif;">
             Nothing here yet...
           </h3>
           {{/if}}
           {{#if yesGoal}}
-          <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
+          <p class="text-lg font-normal text-gray-500 dark:text-gray-400" style="font-family: 'Poppins', sans-serif;">
           Awesome job so far! Your yearly total is up to {{{completedReading}}}! Keep up the great work!
           </p>
           <br>
           <br>
           <div class="w-full h-6 bg-gray-50 rounded-full dark:bg-stone-700 flex items-center">
             <div class="bg-blue-600 h-6 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full w-1/2"style="width: {{goalPercentage}}%">
-              <div class="flex items-center justify-center h-full 65%">{{goalPercentage}}%</div>
+              <div class="flex items-center justify-center h-full 65%" style="font-family: 'Poppins', sans-serif;">{{goalPercentage}}%</div>
             </div>
           </div>
           <br>
           <br>
-          <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-24">
+          <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-24" style="font-family: 'Poppins', sans-serif;">
             Your yearly goal: {{{yearlyGoal}}}
           </p>
         {{/if}}
         <div class="grid grid-cols-1 items-center border-gray-200 border-b  dark:border-gray-700 justify-between"></div>
         </div>
         <p class="text-lg font-normal text-gray-500 dark:text-gray-400">
-          <button id="openModalBtn" class="open-modal-btn text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enter a new goal!</button>
+          <button id="openModalBtn" class="open-modal-btn text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-md  px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="font-family: 'Poppins', sans-serif;">Enter a new goal!</button>
 
           <div id="modal" class="modal">
             <div class="modal-content">
               <span id="closeModal" class="close">&times;</span>
               <br>
-              <h2>Enter Your Yearly Goal</h2>
-              <input type="text" id="yearlyGoalInput" class="yearly-goal-input" placeholder="Enter your goal">
-              <button id="submitBtn" class="submit-btn">Submit</button>
+              <h2 style="font-family: 'Poppins', sans-serif;">Enter Your Yearly Goal</h2>
+              <input type="text" id="yearlyGoalInput" class="yearly-goal-input" placeholder="Enter your goal" style="font-family: 'Poppins', sans-serif;">
+              <button id="submitBtn" class="submit-btn" style="font-family: 'Poppins', sans-serif;">Submit</button>
             </div>
           </div>
         </p>
