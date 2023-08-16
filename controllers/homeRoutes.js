@@ -42,8 +42,7 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
   const username = user.username;
   const id = user.id
   const firstName = user.firstName
-  // const readingEntryData = await Reading_Entry.findByPk(id)
-  // const libraryData = await Library.findByPk(id)
+
 
   const userData = await Users.findByPk(id, {
   include: [{model: Library}, {model: Reading_Entry}]
@@ -53,10 +52,62 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
     res.status(404).json({ message: 'User not found' });
     return;
   }
-  // const test = userData.libraries
-  // const books = test.map((bookname) => bookname.get({ plain: true }));
-  // res.status(200).json(test)
-  res.render('dashboard', { username, loggedIn, firstName })
+  const libraryData = userData.libraries
+  const totalBooks = libraryData.length;
+  const genres = {};
+  libraryData.forEach(book => {
+    if (genres.hasOwnProperty(book.genre)) {
+      genres[book.genre]++
+    } else {
+      genres[book.genre] = 1;
+    }
+  });
+  const genreData = Object.keys(genres).map(genre => {
+    const percentage = (genres[genre] / totalBooks) * 100;
+    return { genre, percentage };
+  });
+
+  const today = new Date();
+  const pastWeekStartDate = new Date(today);
+  pastWeekStartDate.setDate(today.getDate() - 6);
+  
+  // Fetch data from the database
+  const pagesReadData = await Reading_Entry.findAll({
+    attributes: ['date', 'pages_read'],
+    where: {
+      user_id: id
+    },
+  });
+  
+  // Process the data to create labels and series
+  const labels = [];
+  const series = [];
+  
+  for (let i = 0; i < 7; i++) {
+    const currentDate = new Date(pastWeekStartDate);
+    currentDate.setDate(pastWeekStartDate.getDate() + i);
+  
+    const formattedDate = currentDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
+  
+    labels.push(formattedDate);
+  
+    const pagesReadEntry = pagesReadData.find(entry =>
+      entry.date.toISOString().split('T')[0] === currentDate.toISOString().split('T')[0]
+    );
+    series.push(pagesReadEntry ? pagesReadEntry.pages_read : 0);
+  }
+
+  if(totalBooks === 0) {
+    const noBooks = true;
+    res.render('dashboard', { username, loggedIn, firstName, noBooks, totalBooks })
+    return
+  }
+  const yesBooks = true;
+  res.render('dashboard', { username, loggedIn, firstName, yesBooks, pagesReadData: JSON.stringify(pagesReadData), genreData: JSON.stringify(genreData), labels: JSON.stringify(labels), series: JSON.stringify(series) })
 } catch(err) {res.json(err)}
 })
 
@@ -72,6 +123,7 @@ router.get('/profile/:username/library', withAuth, async (req, res)=>{
     })
   const libraryData = userData.libraries
   const allBooks = libraryData.map((book_name) => book_name.get({ plain: true }));
+  const futureBooks = libraryData.filter((book) => book.future_reading).map((book) => book.get({ plain: true }));
   const currentlyReading = libraryData.filter((book) => book.currently_reading).map((book) => book.get({ plain: true }));
   const completedReading = libraryData.filter((book) => book.completed).map((book) => book.get({ plain: true }));
   // res.json(books)
@@ -79,7 +131,7 @@ router.get('/profile/:username/library', withAuth, async (req, res)=>{
     const noBooks = true
     res.render('library', { username, loggedIn, firstName, noBooks})
   } else {
-    res.render('library', { username, loggedIn, firstName, allBooks, currentlyReading, completedReading})
+    res.render('library', { username, loggedIn, allBooks, firstName, futureBooks, currentlyReading, completedReading})
   }
 });
 
@@ -102,31 +154,7 @@ router.get('/analytics', withAuth, async (req, res)=>{
     const percentage = (genres[genre] / totalBooks) * 100;
     return { genre, percentage };
   });
-  // const allBooks = libraryData.map((books) => books.get({ plain: true }));
-  res.render('analytics', { username, loggedIn, firstName, genreData })
-});
-
-router.get('/profile/:username/test', withAuth, async (req, res)=>{
-  const loggedIn = req.session.loggedIn;
-  const user = req.session.user;
-  const username = user.username;
-  const firstName = user.firstName;
-  const id = user.id;
-
-  const userData = await Users.findByPk(id, {
-    include: {model: Library}
-    })
-  const libraryData = userData.libraries
-  const allBooks = libraryData.map((book_name) => book_name.get({ plain: true }));
-  const currentlyReading = libraryData.filter((book) => book.currently_reading).map((book) => book.get({ plain: true }));
-  const completedReading = libraryData.filter((book) => book.completed).map((book) => book.get({ plain: true }));
-  // res.json(books)
-  if(allBooks.length === 0) {
-    const noBooks = true
-    res.render('test', { username, loggedIn, firstName, noBooks})
-  } else {
-    res.render('test', { username, loggedIn, firstName, allBooks, currentlyReading, completedReading})
-  }
+  res.render('analytics', { username, loggedIn, firstName, genreData: JSON.stringify(genreData) })
 });
 
 router.get('*', async (req, res)=>{
