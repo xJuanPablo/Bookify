@@ -42,9 +42,6 @@ const bookAPI = async (formattedSearch) => {
         genre: genre,
         pages: pages,
         img: img,
-        completed: true,
-        currently_reading: true,
-        
     };
     
     return { img, bookData };
@@ -180,12 +177,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
   confirmButton.addEventListener('click', function () {
     const selectedOption = document.querySelector('input[name="choice"]:checked');
-    if (selectedOption && selectedOption.value === 'yes') {
+    if (selectedOption && selectedOption.id === 'currently') {
+      bookData.currently_reading = true;
+      addBookToLibrary(bookData);
+    } else if (selectedOption && selectedOption.id === 'future') {
+      bookData.future_reading = true;
+      addBookToLibrary(bookData);
+    } else if (selectedOption && selectedOption.id === 'completed') {
+      bookData.completed = true;
       addBookToLibrary(bookData);
     }
+    clearSearchResult();
+    confirmButtonContainer.style.display = 'none';
+  });
+
+  wrongBookButton.addEventListener('click', function () {
     clearSearchResult();
     confirmButtonContainer.style.display = 'none';
   });
