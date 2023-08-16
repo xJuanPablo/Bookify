@@ -43,6 +43,10 @@ Users.init(
               len: [8],
             },
         },
+        yearly_goal: {
+          type: DataTypes.INTEGER,
+          allowNull: true,
+        }
     },
     {
         hooks: {

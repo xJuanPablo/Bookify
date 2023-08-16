@@ -5,7 +5,7 @@
     YOU GOT SUPER NO BITCHES</h1>
 {{/if}}
 {{#if allBooks}}
-<div class="container mx-auto bg-stone-400" style="background-image: '../assets/DICKS.png'; height: 400px;">
+<div class="container mx-auto h-3/4 bg-[url('/DICKS.png')] bg-cover mb-2">
     <div class="w-full inline-flex flex-nowrap">
         <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="currently-list">
@@ -16,7 +16,7 @@
                         src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
-                        class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
+                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
                         {{book.book_name}}</div>
                 </div>
                 <button type="button"
@@ -42,7 +42,7 @@
                         src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
-                        class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
+                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
                         {{book.book_name}}</div>
                 </div>
                 <button type="button"
@@ -68,7 +68,7 @@
                         src="{{book.img}}"
                         class="absolute inset-0 bg-cover bg-center z-0"></img>
                     <div
-                        class="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-6xl text-white font-semibold">
+                        class="opacity-0 hover:bg-black hover:bg-opacity-50 hover:opacity-100 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl text-white font-semibold">
                         {{book.book_name}}</div>
                 </div>
                 <button type="button"
@@ -88,9 +88,14 @@
 <script src="/js/deleteBook.js"></script>
 {{/if}}
 
+<<<<<<< HEAD
 <input type="text" placeholder="  Search..." id="SearchBar">
+=======
+<div class="flex items-center justify-center rounded-md">
+<input class=" rounded-md" type="text" placeholder="Search.." id="SearchBar">
+>>>>>>> fb686fdd07ca7d6e9ecfccd59b13f1895fabc47c
 <button type="button"
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="searchButton">
+    class="text-white ml-2 my-0.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="searchButton">
     Search for a Book
     <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
         width="20" height="20" fill="none" viewBox="0 0 20 20">
@@ -98,9 +103,10 @@
             d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
     </svg>
 </button>
+</div>
 <div id="renderImg"></div>
 
-<div id="checkmarkContainer" style="display: none;">
+<div class="bg-gray-300 dark:bg-stone-400 flex items-center justify-center p-4 h-32 w-96 mx-auto rounded-b-md font-sans text-2xl" id="checkmarkContainer" style="display: none;">
     <label>
         <input type="radio" name="choice" value="yes" id="currently">
         I'm currently reading this book!
@@ -115,26 +121,28 @@
     </label>
 </div>
 
-<div id="confirmButtonContainer" style="display: none;">
-    <button type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="confirmButton">
-        Add Book
-        <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            width="20" height="20" fill="none" viewBox="0 0 20 20">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-    </button>
+<div class="flex justify-center items-center my-2">
+    <div class="text-center" id="confirmButtonContainer" style="display: none;">
+        <button type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md mx-auto text-sm px-5 py-2.5 text-center inline-flex dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="confirmButton">
+            Add Book
+            <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </button>
 
-    <button type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="wrongBookButton">
-        Wrong Book
-        <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-            width="20" height="20" fill="none" viewBox="0 0 20 20">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-    </button>
+        <button type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 inline-flex dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 rounded-md p-4 mx-auto" id="wrongBookButton">
+            Wrong Book
+            <svg class="w-4 h-4 ml-2 text-gray-50 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </button>
+    </div>
 </div>
 
 <<<<<<< HEAD
@@ -142,5 +150,9 @@
 =======
 
 
+<<<<<<< HEAD
 >>>>>>> da0453a7c3ef17ae46ea61ac443807e73fa5287d
+=======
+
+>>>>>>> fb686fdd07ca7d6e9ecfccd59b13f1895fabc47c
 <script src="/js/library.js"></script>
