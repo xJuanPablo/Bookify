@@ -7,7 +7,7 @@
 {{#if allBooks}}
 <div class="container mx-auto h-3/4 bg-[url('/DICKS.png')] bg-cover mb-2">
     <div class="w-full inline-flex flex-nowrap">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+        <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="currently-list">
             {{#each currentlyReading as |book| }}
             <li data-entry-id="{{book.id}}">
@@ -33,7 +33,7 @@
         </ul>
     </div>
     <div class="w-full inline-flex flex-nowrap">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+        <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="book-list">
             {{#each futureBooks as |book|}}
             <li data-entry-id="{{book.id}}">
@@ -59,7 +59,7 @@
         </ul>
     </div>
     <div class="w-full inline-flex flex-nowrap" id="has_read">
-        <ul class="flex bg-yellow-950 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
+        <ul class="flex bg-opacity-0 mx-auto space-x-1 overflow-x-scroll items-center justify-center md:justify-start [&_li]:mx-auto [&_img]:max-w-xs"
             id="compelted-list">
             {{#each completedReading as |book|}}
             <li data-entry-id="{{book.id}}">
@@ -87,9 +87,6 @@
 </div>
 <script src="/js/deleteBook.js"></script>
 {{/if}}
-
-
-<input type="text" placeholder="  Search..." id="SearchBar">
 
 <div class="flex items-center justify-center rounded-md">
 <input class=" rounded-md" type="text" placeholder="Search.." id="SearchBar">
