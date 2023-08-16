@@ -6,13 +6,14 @@
             <source src="/assets/Library Video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <div class="content mx-48 -my-20 bg-stone-200 bg-opacity-90 pb-2 w-3/6 rounded-md border-stone-100 border-2">
+        <div class="content mx-auto bg-stone-200 bg-opacity-90 pb-2 w-3/6 rounded-md border-stone-100 border-2">
             <h1 class="mb-4 drop-shadow-lg text-6xl font-extrabold tracking-tight leading-snug text-gray-900 md:text-5xl lg:text-6xl dark:bg-gradient-to-r from-green-400 via-green-500 to-stone-900 bg-clip-text text-transparent"
                 id="myElement"></h1>
             <h5
                 class="mb-4 text-1xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-2xl dark:text-white">
                 Where Words Become Journeys</h5>
-            <p class="indent-8 mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-4 dark:text-black">Welcome to
+            <p class="indent-8 mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-4 dark:text-black">
+                Welcome to
                 <strong>Bookify</strong> where the love of reading meets the power of data. We're dedicated to
                 revolutionizing your reading experience by providing a seamless platform for tracking your reading
                 habits, managing your book collection, and diving deep into the worlds of literature.
@@ -46,5 +47,74 @@
         </div>
     </div>
 </section>
+<section class="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2">
+    <div class=" max-w-2xl w-full bg-gray-50 rounded-sm shadow dark:bg-red-300 p-4 md:p-6 ml-1 my-1">
+        <div class="flex justify-between mb-3">
+            <div class="flex items-center">
+                <div class="flex justify-center items-center">
+                    <h5 class="text-xl font-bold leading-none text-black dark:text-gray-50 pr-1">User
+                        progress
+                    </h5>
+                </div>
+            </div>
+        </div>
 
-<script src="/js/karte.js"></script>
+        <div class="bg-gray-50 dark:bg-stone-600 p-3 rounded-lg">
+            <div class="grid grid-cols-3 gap-3 mb-2">
+                <dl
+                    class="bg-orange-50 dark:bg-orange-200 rounded-lg flex flex-col items-center justify-center h-[78px]">
+                    <dt
+                        class="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-50 text-orange-600 dark:text-orange-500 text-sm font-medium flex items-center justify-center mb-1">
+                        2</dt>
+                    <dd class="text-orange-600 dark:text-orange-500 text-sm font-medium">Books to read</dd>
+                </dl>
+                <dl class="bg-teal-50 dark:bg-teal-100 rounded-lg flex flex-col items-center justify-center h-[78px]">
+                    <dt
+                        class="w-8 h-8 rounded-full bg-teal-100 dark:bg-teal-50 text-teal-600 dark:text-teal-500 text-sm font-medium flex items-center justify-center mb-1">
+                        100</dt>
+                    <dd class="text-teal-600 dark:text-teal-500 text-sm font-medium">Pages per day</dd>
+                </dl>
+                <dl class="bg-blue-50 dark:bg-blue-100 rounded-lg flex flex-col items-center justify-center h-[78px]">
+                    <dt
+                        class="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-500 text-sm font-medium flex items-center justify-center mb-1">
+                        3</dt>
+                    <dd class="text-blue-600 dark:text-blue-500 text-sm font-medium">Books finished</dd>
+                </dl>
+            </div>
+        </div>
+        <!-- Radial Chart -->
+        <div class="py-6" id="radial-chart"></div>
+    </div>
+    <div class="max-w-2xl w-full bg-gray-50 rounded-sm shadow dark:bg-green-300 p-4 md:p-6 px-1 my-1">
+
+        <div class="flex justify-between items-start w-full">
+            <div class="flex-col items-center">
+                <div class="flex items-center mb-1">
+                    <h5 class="text-xl font-bold leading-none text-black dark:text-gray-50 mr-1">What people are reading</h5>
+                </div>
+            </div>
+        </div>
+        <!-- Line Chart -->
+        <div class="py-6" id="pie-chart"></div>
+    </div>
+    <div class="max-w-2xl w-full bg-gray-50 rounded-sm shadow dark:bg-orange-200 p-4 md:p-6 -ml-1 my-1">
+        <div class="flex justify-between mb-5">
+            <div>
+                <h5 class="text-xl font-bold leading-none text-black dark:text-gray-50 pb-2">Pages per day</h5>
+                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Comparing 2 readers</p>
+            </div>
+            <div
+                class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">
+                23%
+                <svg class="w-3 h-3 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 10 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 13V1m0 0L1 5m4-4 4 4" />
+                </svg>
+            </div>
+        </div>
+        <div id="grid-chart"></div>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="/js/animations.js"></script>
