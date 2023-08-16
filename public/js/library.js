@@ -62,12 +62,16 @@ const renderImage = (imageURL, bookData) => {
   
   const bookImg = document.createElement('img');
   bookImg.src = imageURL;
+  bookImg.className = 'flex items-center justify-center p-4 mx-auto rounded-b-md font-sans text-2xl';
   
   const bookTitle = document.createElement('h2');
   bookTitle.textContent = bookData.book_name;
+
+  bookTitle.className = 'bg-gray-300 dark:bg-stone-400 flex items-center justify-center p-4 mx-auto mt-3 h-20 w-96 rounded-t-md font-sans text-2xl';
   
   const bookAuthor = document.createElement('p');
   bookAuthor.textContent = `by: ${bookData.author}`;
+  bookAuthor.className = 'bg-gray-300 dark:bg-stone-400 flex items-center justify-center p-4 mx-auto h-20 w-96 font-sans text-2xl';
   
   renderImg.appendChild(bookTitle);
   renderImg.appendChild(bookImg);
