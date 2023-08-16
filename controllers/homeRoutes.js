@@ -106,28 +106,58 @@ router.get('/profile/:username', withAuth, async (req,res)=>{
   const goalPercentageCalc = (completedReading / yearlyGoal) * 100;
   const goalPercentage = goalPercentageCalc.toFixed(2);
 
-  if(pagesReadData.length === 0 && totalBooks === 0) {
-    const noBooks = true;
-    const noEntries = true;
-    res.render('dashboard', { username, loggedIn, firstName, noBooks, noEntries, totalBooks, completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage})
-    return
-  }
-  if(totalBooks === 0) {
-    const noBooks = true;
-    const yesEntries = true;
-    res.render('dashboard', { username, loggedIn, firstName, yesEntries, noBooks, totalBooks, labels: JSON.stringify(labels), series: JSON.stringify(series), completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage })
-    return
+  // if(pagesReadData.length === 0 && totalBooks === 0) {
+  //   const noBooks = true;
+  //   const noEntries = true;
+  //   res.render('dashboard', { username, loggedIn, firstName, noBooks, noEntries, totalBooks, completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage})
+  //   return
+  // }
+  // if(totalBooks === 0) {
+  //   const noBooks = true;
+  //   const yesEntries = true;
+  //   res.render('dashboard', { username, loggedIn, firstName, yesEntries, noBooks, totalBooks, labels: JSON.stringify(labels), series: JSON.stringify(series), completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage })
+  //   return
+  // }
+
+  // if(pagesReadData.length === 0) {
+  //   const noEntries = true;
+  //   const yesBooks = true;
+  //   res.render('dashboard', { username, loggedIn, firstName, noEntries, yesBooks, genreData: JSON.stringify(genreData), totalBooks, completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage })
+  //   return
+  // }
+  // const yesBooks = true;
+  // const yesEntries = true;
+
+  let noBooks = false;
+  let noEntries = false;
+  let noGoal = false;
+  let yesBooks = false;
+  let yesEntries = false;
+  let yesGoal = false;
+
+  if (!yearlyGoal) {
+    noGoal = true;
+  } else {
+    yesGoal = true;
   }
 
-  if(pagesReadData.length === 0) {
-    const noEntries = true;
-    const yesBooks = true;
-    res.render('dashboard', { username, loggedIn, firstName, noEntries, yesBooks, genreData: JSON.stringify(genreData), totalBooks, completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage })
-    return
+  if (pagesReadData.length === 0) {
+    noEntries = true;
   }
-  const yesBooks = true;
-  const yesEntries = true;
-  res.render('dashboard', { username, loggedIn, firstName, yesEntries, yesBooks, genreData: JSON.stringify(genreData), labels: JSON.stringify(labels), series: JSON.stringify(series), totalBooks, completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage })
+
+  if (totalBooks === 0) {
+    noBooks = true;
+  }
+
+  if (!noBooks && !noEntries) {
+    yesBooks = true;
+    yesEntries = true;
+  } else if (noBooks && !noEntries) {
+    yesEntries = true;
+  } else if (!noBooks && noEntries) {
+    yesBooks = true;
+  }
+  res.render('dashboard', { username, loggedIn, firstName, noEntries, noBooks, noGoal, yesGoal, yesEntries, yesBooks, genreData: JSON.stringify(genreData), labels: JSON.stringify(labels), series: JSON.stringify(series), totalBooks, completedReading: JSON.stringify(completedReading), yearlyGoal, goalPercentage })
 } catch(err) {res.json(err)}
 })
 
