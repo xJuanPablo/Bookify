@@ -41,7 +41,10 @@ const bookAPI = async (formattedSearch) => {
         isbn: isbn,
         genre: genre,
         pages: pages,
-        img: img
+        img: img,
+        completed: true,
+        currently_reading: true,
+        
     };
     
     return { img, bookData };

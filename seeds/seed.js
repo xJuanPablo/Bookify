@@ -7,7 +7,41 @@ const sampleUsers = [
 ];
 
 const sampleReadingEntries = [
-    { user_id: 1, date: new Date(), pages_read: 50 },
+    {
+        user_id: 1,
+        date: new Date(new Date().setDate(new Date().getDate() - 6)),
+        pages_read: 20,
+      },
+      {
+        user_id: 1,
+        date: new Date(new Date().setDate(new Date().getDate() - 5)),
+        pages_read: 15,
+      },
+      {
+        user_id: 1,
+        date: new Date(new Date().setDate(new Date().getDate() - 4)),
+        pages_read: 30,
+      },
+      {
+        user_id: 1,
+        date: new Date(new Date().setDate(new Date().getDate() - 3)),
+        pages_read: 25,
+      },
+      {
+        user_id: 1,
+        date: new Date(new Date().setDate(new Date().getDate() - 2)),
+        pages_read: 40,
+      },
+      {
+        user_id: 1,
+        date: new Date(new Date().setDate(new Date().getDate() - 1)),
+        pages_read: 10,
+      },
+      {
+        user_id: 1,
+        date: new Date(),
+        pages_read: 35,
+      },
 ];
 
 const sampleLibraryEntries = [
