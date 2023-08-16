@@ -4,22 +4,9 @@ const { Op } = require('sequelize');
 
 router.post('/', async (req, res) => {
     try {
-        // const entryData = await Reading_Entry.create({
-        //     ...req.body,
-        //     user_id: req.session.user_id
-        // })
-        // res.status(200).json(entryData);
         const userId = req.session.user_id;
         const date = req.body.date;
         const pagesRead = req.body.pages_read;
-    
-        // Check if an entry with the same date already exists for the user
-        // const existingEntry = await Reading_Entry.findOne({
-        //   where: {
-        //     user_id: userId,
-        //     date: date
-        //   }
-        // });
         const existingEntry = await Reading_Entry.findOne({
             where: {
                 user_id: req.session.user_id,

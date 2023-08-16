@@ -14,11 +14,11 @@
     {{#if loggedIn}}
     <nav class="w-full bg-white border-gray-200 dark:bg-stone-800 z-50">
         <div class="flex flex-wrap items-center mx-10 p-4 justify-between">
-            <a href="https://flowbite.com/" class="flex items-center justify-left">
+            <a href="/profile/{{username}}" class="flex items-center justify-left">
                 <span class="self-center text-sm font-semibold whitespace-nowrap dark:text-gray-50">Signed In As: {{username}}</span>
             </a>
 
-            <div class="flex text-4xl font-semibold ml-32">Bookify</div>
+            <a href="/"><div class="flex text-4xl font-semibold ml-24">Bookify</div></a>
             <div class="flex items-center md:order-2">
                 <span class="self-center text-sm font-semibold whitespace-nowrap dark:text-gray-50 mr-5">What are we reading today?</span>
                 {{!-- <span class="self-center text-sm font-semibold whitespace-nowrap dark:text-gray-50 mr-5">Hello {{firstName}}!</span> --}}
