@@ -1,5 +1,5 @@
 <script src="https://cdn.tailwindcss.com"></script>
-<section class="bg-white dark:bg-gray-900 antialiased">
+<section class="bg-white dark:bg-stone-700 antialiased">
   <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl dark:text-white">
@@ -15,10 +15,10 @@
     <div class="grid grid-cols-1 mt-12 text-center sm:mt-16 gap-x-20 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
       <div class="space-y-4">
         <span
-          class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+          class="bg-gray-100 text-stone-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-stone-700 dark:text-gray-300">
           Pages read this past week
         </span>
-        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+        <div class="max-w-sm w-full bg-green-200 rounded-lg shadow dark:bg-stone-800 p-4 md:p-6">
         {{#if noEntries}}
         <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
           Nothing here yet...
@@ -148,7 +148,7 @@
           class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
           My favorite genres
         </span>
-        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+        <div class="max-w-sm w-full bg-yellow-100 rounded-lg shadow dark:bg-stone-800 p-4 md:p-6">
         {{#if noBooks}}
         <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
           Nothing here yet...
@@ -246,7 +246,7 @@
             class="bg-gray-100 text-gray-900 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
             My goal and total books read
           </span>
-        <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+        <div class="max-w-sm w-full bg-red-200 rounded-lg shadow dark:bg-stone-800 p-4 md:p-6">
           {{#if noGoal}}
           <h3 class="text-2xl font-bold leading-tight text-gray-900 dark:text-white">
             Nothing here yet...
@@ -258,7 +258,7 @@
           </p>
           <br>
           <br>
-          <div class="w-full h-6 bg-gray-200 rounded-full dark:bg-gray-700 flex items-center">
+          <div class="w-full h-6 bg-gray-50 rounded-full dark:bg-stone-700 flex items-center">
             <div class="bg-blue-600 h-6 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full w-1/2"style="width: {{goalPercentage}}%">
               <div class="flex items-center justify-center h-full 65%">{{goalPercentage}}%</div>
             </div>

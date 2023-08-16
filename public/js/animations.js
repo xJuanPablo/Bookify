@@ -197,7 +197,7 @@ window.addEventListener("load", function () {
             },
         ],
         chart: {
-            height: "100%",
+            height: "90%",
             maxWidth: "100%",
             type: "area",
             fontFamily: "Inter, sans-serif",
