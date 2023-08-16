@@ -1,10 +1,10 @@
 # Bookify
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Handlebars](https://img.shields.io/badge/Handlebars%20js-f0772b?style=for-the-badge&logo=handlebarsdotjs&logoColor=black)
 
-# Description
+## Description
 
 Embark on a literary adventure like never before with Bookify, the ultimate haven for book enthusiasts and bibliophiles. Immerse yourself in a world where your reading habits come to life. At Bookify, we understand that reading is not merely a pastime, but a profound journey that enriches the mind and soul. Our platform is designed to be your faithful companion on this voyage, allowing you to log, track, and explore your reading habits in ways that resonate with your unique preferences.
-# Table of Contents
+
 
 ## Table of Contents
   * [Demo](#demo)
@@ -14,7 +14,7 @@ Embark on a literary adventure like never before with Bookify, the ultimate have
   * [Questions](#questions)
   * [License](#license)
 
-# Demo
+## Demo
 
 # Installation
 You can employ this backend code by following these steps:
@@ -29,13 +29,13 @@ You can employ this backend code by following these steps:
 
 
 
-# Usage
+## Usage
 To use this application, perform the following steps:
 
 1. In your browser type in https://bookify-1-c0d5b3199b9a.herokuapp.com/, or click[HERE](https://bookify-1-c0d5b3199b9a.herokuapp.com/)
 
 
-# Contributing
+## Contributing
 If you're interested in contributing to this application, feel free to fork the repository and introduce any enhancements you deem valuable.
 # Questions
 
@@ -48,8 +48,7 @@ Thank you for viewing our full-stack application. If you have any questions or w
 [drog41813](https://github.com/drog41813)
 
 [xJuanPablo](https://github.com/xJuanPablo)
-# License
-
+## License
 
 
 MIT License
