@@ -12,7 +12,7 @@ gsap.set(items, { x: '-100%' });
 // animates container box into view
 gsap.to(items, {
     duration: 4,
-    x: '50%',
+    x: 0,
     y: '25%',
     opacity: 1,
     stagger: 0.1,
@@ -75,11 +75,12 @@ window.addEventListener("load", function () {
                     bottom: -20,
                 },
             },
-            labels: ["Done", "In progress", "To do"],
+            labels: ["Books to read", "Pages per day", "Books finished"],
             legend: {
                 show: true,
                 position: "bottom",
                 fontFamily: "Inter, sans-serif",
+                colors: "#FFFFFF",
             },
             tooltip: {
                 enabled: true,
@@ -130,7 +131,7 @@ window.addEventListener("load", function () {
                     }
                 },
             },
-            labels: ["Direct", "Organic search", "Referrals"],
+            labels: ["Thriller", "Romance", "Science Fiction"],
             dataLabels: {
                 enabled: true,
                 style: {
@@ -185,14 +186,14 @@ window.addEventListener("load", function () {
         },
         series: [
             {
-                name: "Developer Edition",
-                data: [1500, 1418, 1456, 1526, 1356, 1256],
-                color: "#1A56DB",
+                name: "Average performance",
+                data: [50, 41, 45, 52, 35, 25],
+                color: "#FF0000",
             },
             {
-                name: "Designer Edition",
-                data: [643, 413, 765, 412, 1423, 1731],
-                color: "#7E3BF2",
+                name: "Excellent performance",
+                data: [74, 61, 76, 51, 82, 93],
+                color: "#00FF00",
             },
         ],
         chart: {
