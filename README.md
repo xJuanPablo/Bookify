@@ -3,7 +3,7 @@
 
 ## Description
 
-Embark on a literary adventure like never before with Bookify, the ultimate haven for book enthusiasts and bibliophiles. Immerse yourself in a world where your reading habits come to life. At Bookify, we understand that reading is not merely a pastime, but a profound journey that enriches the mind and soul. Our platform is designed to be your faithful companion on this voyage, allowing you to log, track, and explore your reading habits in ways that resonate with your unique preferences.
+Embark on a literary adventure like never before with Bookify, the ultimate haven for book enthusiasts and bibliophiles. Immerse yourself in a world where your reading habits come to life. At Bookify, we understand that reading is not merely a pastime but a profound journey that enriches the mind and soul. Our platform is designed to be your faithful companion on this voyage, allowing you to log, track, and explore your reading habits in ways that resonate with your unique preferences.
 
 
 ## Table of Contents
@@ -15,6 +15,10 @@ Embark on a literary adventure like never before with Bookify, the ultimate have
   * [License](#license)
 
 ## Demo
+
+
+https://github.com/xJuanPablo/Bookify/assets/135268267/de8a90fb-b37e-479a-a064-bf7137e9d96a
+
 
 # Installation
 You can employ this backend code by following these steps:
